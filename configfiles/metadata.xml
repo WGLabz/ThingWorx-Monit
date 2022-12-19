@@ -8,6 +8,13 @@
          minimumThingWorxVersion="9.1.0"
          name="ThingWorx Metrices"
          packageVersion="1.0.0"
-         vendor=""></ExtensionPackage>
+         vendor="">
+            <JarResources>
+                <FileResource
+                 description=""
+                 file="org.json.jar"
+                 type="JAR"></FileResource>
+            </JarResources>
+        </ExtensionPackage>
     </ExtensionPackages>
 </Entities>
