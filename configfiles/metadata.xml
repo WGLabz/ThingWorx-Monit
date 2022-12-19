@@ -14,7 +14,24 @@
                  description=""
                  file="org.json.jar"
                  type="JAR"></FileResource>
+                <FileResource
+                 description=""
+                 file="thingworx_metrices.jar"
+                 type="JAR"></FileResource>
             </JarResources>
         </ExtensionPackage>
     </ExtensionPackages>
+    <ThingPackages>
+        <ThingPackage
+         className="twx.entities.templates.JMXMetrices_TT"
+         description=""
+         name="JMXMetrices_TTPackage"></ThingPackage>
+    </ThingPackages>
+    <ThingTemplates>
+        <ThingTemplate
+         aspect.isEditableExtensionObject="false"
+         description=""
+         name="JMXMetrices_TT"
+         thingPackage="JMXMetrices_TTPackage"></ThingTemplate>
+    </ThingTemplates>
 </Entities>
