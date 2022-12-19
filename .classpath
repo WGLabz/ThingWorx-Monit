@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="twx-lib/jackson-core-2.11.1.jar"/>
+	<classpathentry kind="lib" path="twx-lib/logback-core-1.2.3.jar"/>
+	<classpathentry kind="lib" path="twx-lib/jackson-annotations-2.11.1.jar"/>
+	<classpathentry kind="lib" path="twx-lib/logback-classic-1.2.3.jar"/>
+	<classpathentry kind="lib" path="twx-lib/jackson-databind-2.11.1.jar"/>
+	<classpathentry kind="lib" path="twx-lib/thingworx-communications-client-9.1.0-b10877.jar"/>
+	<classpathentry kind="lib" path="twx-lib/joda-time-2.10.5.jar"/>
+	<classpathentry kind="lib" path="twx-lib/rhino-1.7.11.jar"/>
+	<classpathentry kind="lib" path="twx-lib/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="twx-lib/thingworx-javadocs-9.1.0-b10877.jar"/>
+	<classpathentry kind="lib" path="twx-lib/jackson-dataformat-smile-2.11.1.jar"/>
+	<classpathentry kind="lib" path="twx-lib/thingworx-ext-sdk-9.1.0-b10877.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ThingWorx Metrices/twx-lib/thingworx-javadocs-9.1.0-b10877.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

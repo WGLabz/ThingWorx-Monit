@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities>
+    <ExtensionPackages>
+        <ExtensionPackage
+         dependsOn=""
+         description=""
+         haCompatible="false"
+         minimumThingWorxVersion="9.1.0"
+         name="ThingWorx Metrices"
+         packageVersion="1.0.0"
+         vendor=""></ExtensionPackage>
+    </ExtensionPackages>
+</Entities>
