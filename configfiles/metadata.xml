@@ -7,7 +7,7 @@
          haCompatible="false"
          minimumThingWorxVersion="9.1.0"
          name="ThingWorx Metrices"
-         packageVersion="1.0.0"
+         packageVersion="1.0.2"
          vendor="">
             <JarResources>
                 <FileResource
@@ -18,6 +18,22 @@
                  description=""
                  file="thingworx_metrices.jar"
                  type="JAR"></FileResource>
+                <FileResource
+                 description=""
+                 file="jna-jpms-5.12.1.jar"
+                 type="JAR"></FileResource>
+                <FileResource
+                 description=""
+                 file="jna-platform-jpms-5.12.1.jar"
+                 type="JAR"></FileResource>
+                <FileResource
+                 description=""
+                 file="oshi-core-java11-6.4.0.jar"
+                 type="JAR"></FileResource>
+                <FileResource
+                 description=""
+                 file="slf4j-api-1.7.32.jar"
+                 type="JAR"></FileResource>
             </JarResources>
         </ExtensionPackage>
     </ExtensionPackages>
@@ -26,6 +42,10 @@
          className="twx.entities.templates.JMXMetrices_TT"
          description=""
          name="JMXMetrices_TTPackage"></ThingPackage>
+        <ThingPackage
+         className="twx.entities.templates.OSHIMetrices_TT"
+         description=""
+         name="OSHIMetrices_TTPackage"></ThingPackage>
     </ThingPackages>
     <ThingTemplates>
         <ThingTemplate
@@ -33,5 +53,10 @@
          description=""
          name="JMXMetrices_TT"
          thingPackage="JMXMetrices_TTPackage"></ThingTemplate>
+        <ThingTemplate
+         aspect.isEditableExtensionObject="false"
+         description=""
+         name="OSHIMetrices_TT"
+         thingPackage="OSHIMetrices_TTPackage"></ThingTemplate>
     </ThingTemplates>
 </Entities>

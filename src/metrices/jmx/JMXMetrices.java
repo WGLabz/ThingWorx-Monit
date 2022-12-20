@@ -5,6 +5,7 @@ import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryUsage;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
+import com.sun.management.OperatingSystemMXBean;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -69,6 +70,28 @@ public class JMXMetrices {
 		response.put("THREADS", threads);
 		
 		return response;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public JSONObject getCPULoadAndMEM() throws JSONException {
+		OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(
+                OperatingSystemMXBean.class);
+		
+		JSONObject cpu = new JSONObject();
+
+		cpu.put("JVM_CPU_%", osBean.getProcessCpuLoad());
+		cpu.put("TOTAL_CPU_%", osBean.getSystemCpuLoad());
+		
+
+		cpu.put("FREE_MEMORY", osBean.getFreePhysicalMemorySize());
+		cpu.put("FREE_SWAP_MEMORY", osBean.getFreeSwapSpaceSize());
+		cpu.put("TOTAL_SWAP_MEMORY", osBean.getTotalSwapSpaceSize());
+		cpu.put("TOTAL_MEMORY", osBean.getTotalPhysicalMemorySize());
+		cpu.put("SYS_LOAD_AVG", osBean.getSystemLoadAverage());
+		
+		return cpu;
+		
+		
 	}
 	
 	

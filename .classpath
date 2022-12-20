@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -13,7 +14,6 @@
 	<classpathentry kind="lib" path="twx-lib/thingworx-communications-client-9.1.0-b10877.jar"/>
 	<classpathentry kind="lib" path="twx-lib/joda-time-2.10.5.jar"/>
 	<classpathentry kind="lib" path="twx-lib/rhino-1.7.11.jar"/>
-	<classpathentry kind="lib" path="twx-lib/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="lib" path="twx-lib/thingworx-javadocs-9.1.0-b10877.jar"/>
 	<classpathentry kind="lib" path="twx-lib/jackson-dataformat-smile-2.11.1.jar"/>
 	<classpathentry kind="lib" path="twx-lib/thingworx-ext-sdk-9.1.0-b10877.jar">
@@ -21,7 +21,11 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/ThingWorx Metrices/twx-lib/thingworx-javadocs-9.1.0-b10877.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/org.json.jar"/>
+	<classpathentry kind="lib" path="lib/jna-jpms-5.12.1.jar"/>
+	<classpathentry kind="lib" path="lib/jna-platform-jpms-5.12.1.jar"/>
+	<classpathentry kind="lib" path="lib/oshi-core-java11-6.4.0.jar"/>
+	<classpathentry kind="lib" path="twx-lib/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.32.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
