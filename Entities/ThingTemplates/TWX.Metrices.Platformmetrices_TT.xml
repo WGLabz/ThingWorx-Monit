@@ -95,7 +95,7 @@
                      aspect.cacheTime="0.0"
                      aspect.dataChangeType="VALUE"
                      aspect.dataShape="TWX.Metrices.ProcessorCache_DS"
-                     
+                     aspect.isIndexed="false"
                      aspect.isPersistent="true"
                      baseType="INFOTABLE"
                      category=""
@@ -106,7 +106,7 @@
                     <PropertyDefinition
                      aspect.cacheTime="0.0"
                      aspect.dataChangeType="VALUE"
-                     
+                     aspect.isIndexed="false"
                      aspect.isPersistent="false"
                      baseType="JSON"
                      category=""
@@ -118,7 +118,7 @@
                      aspect.cacheTime="0.0"
                      aspect.dataChangeType="VALUE"
                      aspect.dataShape="TWX.Metrices.DiskInfo_DS"
-                     
+                     aspect.isIndexed="false"
                      aspect.isPersistent="true"
                      baseType="INFOTABLE"
                      category=""
@@ -129,7 +129,7 @@
                     <PropertyDefinition
                      aspect.cacheTime="0.0"
                      aspect.dataChangeType="VALUE"
-                     
+                     aspect.isIndexed="false"
                      aspect.isPersistent="false"
                      baseType="JSON"
                      category=""
@@ -186,7 +186,7 @@
                      aspect.cacheTime="0.0"
                      aspect.dataChangeType="VALUE"
                      aspect.dataShape="TWX.Metrices.RAMMemoryDetails_DS"
-                     
+                     aspect.isIndexed="false"
                      aspect.isPersistent="false"
                      baseType="INFOTABLE"
                      category=""

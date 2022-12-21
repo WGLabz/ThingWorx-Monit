@@ -6,6 +6,7 @@
     <Projects>
         <Project
          artifactId=""
+         aspect.projectType="Component"
          dependsOn="{&quot;extensions&quot;:&quot;ThingWorx Metrices:1.0.2&quot;,&quot;projects&quot;:&quot;&quot;}"
          description=""
          documentationContent=""
