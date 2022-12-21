@@ -92,7 +92,7 @@ public class OSHIMetrices {
       this.os.getProcesses(
           ProcessFiltering.ALL_PROCESSES,
           ProcessSorting.CPU_DESC,
-          5
+          15
         );
     JSONArray procs_ = new JSONArray();
     for (int i = 0; i < procs.size(); i++) {
