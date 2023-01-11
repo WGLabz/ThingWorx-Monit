@@ -55,6 +55,22 @@
                          ordinal="0"></ResultType>
                         <ParameterDefinitions></ParameterDefinitions>
                     </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="true"
+                     category=""
+                     description=""
+                     isAllowOverride="true"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="SetCachedProperties">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
                 </ServiceDefinitions>
                 <EventDefinitions></EventDefinitions>
                 <ServiceMappings></ServiceMappings>
@@ -125,8 +141,101 @@
                             </ConfigurationTable>
                         </ConfigurationTables>
                     </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="SetCachedProperties">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        (() => {
+                                            var cpuAndMEM = Things['JMXMetrices_Thing'].GetCPULoadAndMem();
+                                            var jmxMetrices = Things['JMXMetrices_Thing'].GetJMXMetrices();
+                                        
+                                            Things['TWX.Metrices.HistoricDataHelper_Thing'].MEMORY_METRICES_JMX = JSON.stringify({
+                                                'TOTAL_SWAP_MEMORY': cpuAndMEM.TOTAL_SWAP_MEMORY,
+                                                'FREE_MEMORY': cpuAndMEM.FREE_MEMORY,
+                                                'FREE_SWAP_MEMORY': cpuAndMEM.FREE_SWAP_MEMORY,
+                                                'TOTAL_MEMORY': cpuAndMEM.TOTAL_MEMORY,
+                                                'USED_HEAP': jmxMetrices.MEM.USED_HEAP,
+                                                'MAX_HEAP': jmxMetrices.MEM.MAX_HEAP,
+                                                'COMMITED_HEAP': jmxMetrices.MEM.COMMITED_HEAP,
+                                                'INITIAL_NON_HEAP': jmxMetrices.MEM.INITIAL_NON_HEAP,
+                                                'USED_NON_HEAP': jmxMetrices.MEM.USED_NON_HEAP,
+                                                'INITIAL_HEAP': jmxMetrices.MEM.INITIAL_HEAP,
+                                                'COMMITED_NON_HEAP': jmxMetrices.MEM.COMMITED_NON_HEAP,
+                                                'MAX_NON_HEAP': jmxMetrices.MEM.MAX_NON_HEAP,
+                                            });
+                                        
+                                        })();
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
                 </ServiceImplementations>
-                <Subscriptions></Subscriptions>
+                <Subscriptions>
+                    <Subscription
+                     description=""
+                     enabled="true"
+                     eventName="Timer"
+                     name="SetCachedProperties_SUB"
+                     source="TWX.Metrices.BackendTimer_Thing"
+                     sourceProperty=""
+                     sourceType="Thing">
+                        <ServiceImplementation
+                         description=""
+                         handlerName="Script"
+                         name="SetCachedProperties_SUB">
+                            <ConfigurationTables>
+                                <ConfigurationTable
+                                 dataShapeName=""
+                                 description=""
+                                 isMultiRow="false"
+                                 name="Script"
+                                 ordinal="0">
+                                    <DataShape>
+                                        <FieldDefinitions>
+                                            <FieldDefinition
+                                             baseType="STRING"
+                                             description="code"
+                                             name="code"
+                                             ordinal="0"></FieldDefinition>
+                                        </FieldDefinitions>
+                                    </DataShape>
+                                    <Rows>
+                                        <Row>
+                                            <code>
+                                            <![CDATA[
+                                            me.SetCachedProperties();
+                                            ]]>
+                                            </code>
+                                        </Row>
+                                    </Rows>
+                                </ConfigurationTable>
+                            </ConfigurationTables>
+                        </ServiceImplementation>
+                    </Subscription>
+                </Subscriptions>
             </ThingShape>
             <ImplementedShapes></ImplementedShapes>
             <SharedConfigurationTables></SharedConfigurationTables>

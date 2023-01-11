@@ -305,15 +305,15 @@
                                 <Row>
                                     <CPUPercentage>9.0</CPUPercentage>
                                     <ID>0.0</ID>
-                                    <MemPercentage>4.0</MemPercentage>
+                                    <MemPercentage>5.0</MemPercentage>
                                     <Name>
                                     <![CDATA[
                                     java
                                     ]]>
                                     </Name>
                                     <PID>1750232.0</PID>
-                                    <RSS>1.321259008E9</RSS>
-                                    <VSZ>1.2640612352E10</VSZ>
+                                    <RSS>1.661181952E9</RSS>
+                                    <VSZ>1.2753973248E10</VSZ>
                                 </Row>
                                 <Row>
                                     <CPUPercentage>1.0</CPUPercentage>
@@ -364,13 +364,13 @@
                                     ]]>
                                     </Name>
                                     <PID>16734.0</PID>
-                                    <RSS>5.1421184E7</RSS>
-                                    <VSZ>1.38817536E8</VSZ>
+                                    <RSS>3.5782656E7</RSS>
+                                    <VSZ>1.21888768E8</VSZ>
                                 </Row>
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2022-12-21T12:15:03.664Z</Timestamp>
+                    <Timestamp>2023-01-11T07:58:36.766Z</Timestamp>
                     <Quality>GOOD</Quality>
                 </ProcessesCache>
             </ThingProperties>

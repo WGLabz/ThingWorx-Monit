@@ -33,145 +33,388 @@
             <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
             <ConfigurationTables></ConfigurationTables>
             <ThingShape>
-                <PropertyDefinitions></PropertyDefinitions>
-                <ServiceDefinitions></ServiceDefinitions>
+                <PropertyDefinitions>
+                    <PropertyDefinition
+                     aspect.cacheTime="0.0"
+                     aspect.dataChangeType="VALUE"
+                     baseType="NUMBER"
+                     category=""
+                     description=""
+                     isLocalOnly="false"
+                     name="CURRENT_ACTIVE_USERS"
+                     ordinal="2"></PropertyDefinition>
+                    <PropertyDefinition
+                     aspect.cacheTime="0.0"
+                     aspect.dataChangeType="VALUE"
+                     baseType="NUMBER"
+                     category=""
+                     description=""
+                     isLocalOnly="false"
+                     name="TOTAL_USER_COUNT"
+                     ordinal="3"></PropertyDefinition>
+                </PropertyDefinitions>
+                <ServiceDefinitions>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="true"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetIndustrialConnectionsInfo">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="true"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetLogs">
+                        <ResultType
+                         aspect.dataShape="TWX.Metrices.LogEntry_DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="DATETIME"
+                             description=""
+                             name="EndDate"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="ERROR"
+                             baseType="STRING"
+                             description=""
+                             name="LogLevel"
+                             ordinal="3"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="QUERY"
+                             description=""
+                             name="Query"
+                             ordinal="5"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="SearchString"
+                             ordinal="6"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="DATETIME"
+                             description=""
+                             name="StartDate"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="USERNAME"
+                             description=""
+                             name="UserName"
+                             ordinal="4"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="true"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="SetCachedProperties">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="Test">
+                        <ResultType
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                </ServiceDefinitions>
                 <EventDefinitions></EventDefinitions>
                 <ServiceMappings></ServiceMappings>
-                <ServiceImplementations></ServiceImplementations>
-                <Subscriptions></Subscriptions>
+                <ServiceImplementations>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetIndustrialConnectionsInfo">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code></code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetLogs">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var queryParams = {
+                                        	maxItems: undefined,
+                                        	searchExpression: SearchString,
+                                        	fromLogLevel: LogLevel,
+                                        	endDate: EndDate || new Date(),
+                                        	ascendingSearch: undefined,
+                                        	oldestFirst: false,
+                                        	toLogLevel: "ERROR",
+                                        	user: UserName,
+                                        	sortFieldName: undefined,
+                                        	startDate: StartDate || new Date(new Date() - 24*60*60*1000)
+                                        };
+                                        let scriptLogs = Logs["ScriptLog"].QueryLogEntries(queryParams);
+                                        let scriptLogs_ = Resources["InfoTableFunctions"].DeriveFields({
+                                        	types: "STRING",
+                                        	t: scriptLogs,
+                                        	columns: "Source",
+                                        	expressions: "'Script Log'"
+                                        });
+                                        
+                                        
+                                        let applicationLogs = Logs["ApplicationLog"].QueryLogEntries(queryParams);
+                                        
+                                        let applicationLogs_ = Resources["InfoTableFunctions"].DeriveFields({
+                                        	types: "STRING",
+                                        	t: applicationLogs,
+                                        	columns: "Source",
+                                        	expressions: "'Application Log'"
+                                        });
+                                        let params = {
+                                        	t1: scriptLogs_,
+                                        	t2: applicationLogs_ 
+                                        };
+                                        
+                                        let result = Resources["InfoTableFunctions"].Union(params);
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="SetCachedProperties">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        (() => {
+                                            let currentMetrices = JSON.parse(Things['TWX.Metrices.HistoricDataHelper_Thing'].PlatformMetrices || '{}');
+                                            // User and sessions
+                                            let userAndSessions = Subsystems["UserManagementSubsystem"].GetPerformanceMetrics();
+                                            userAndSessions.rows.toArray().forEach(row => {
+                                                if (row.name === "activeUsers"){
+                                                    currentMetrices.ACTIVE_USERS = row.value;
+                                                    me.CURRENT_ACTIVE_USERS = row.value;
+                                                }
+                                                if (row.name === "activeSessions")
+                                                    currentMetrices.ACTIVE_USER_SESSIONS = row.value;
+                                                if (row.name === "userCount"){
+                                                    currentMetrices.TOTAL_USER_COUNT = row.value;
+                                                    me.TOTAL_USER_COUNT = row.value;
+                                                }
+                                        
+                                            });
+                                        
+                                            //Platform Metrices
+                                            let platformMetrices = Subsystems["PlatformSubsystem"].GetPerformanceMetrics();
+                                            platformMetrices.rows.toArray().forEach(row => {
+                                        
+                                                if (row.name === "systemUpTime")
+                                                    currentMetrices.SYSTEM_UPTIME = row.value;
+                                                if (row.name === "totalMemoryAllocated")
+                                                    currentMetrices.TOTAL_MEMORY_ALLOCATED = (row.value / 1073741824).toFixed(2);
+                                                if (row.name === "eventQueueSize")
+                                                    currentMetrices.EVENT_QUEUE_SIZE = row.value;
+                                                if (row.name === "thingCount")
+                                                    currentMetrices.THING_COUNT = row.value;
+                                                if (row.name === "memoryInUse")
+                                                    currentMetrices.MEMORY_IN_USE = (row.value / 1073741824).toFixed(2);
+                                            });
+                                            // Platform stats
+                                            let platformStats = Subsystems["PlatformSubsystem"].GetPlatformStats();
+                                            platformStats.rows.toArray().forEach(row => {
+                                                currentMetrices.STREAM_QUEUE_SIZE = row.streamQueueSize;
+                                                currentMetrices.VSTREAM_QUEUE_SIZE = row.valueStreamQueueSize;
+                                            });
+                                        
+                                            //Finally set the metric Prop.
+                                            Things['TWX.Metrices.HistoricDataHelper_Thing'].PlatformMetrices = JSON.stringify(currentMetrices);
+                                        })();
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="Test">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var result;
+                                        (() => {
+                                           result = Subsystems["ValueStreamProcessingSubsystem"].GetPerformanceMetrics(); 
+                                        })();
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                </ServiceImplementations>
+                <Subscriptions>
+                    <Subscription
+                     description=""
+                     enabled="true"
+                     eventName="Timer"
+                     name="SetCachedPropertiesSUB"
+                     source="TWX.Metrices.BackendTimer_Thing"
+                     sourceProperty=""
+                     sourceType="Thing">
+                        <ServiceImplementation
+                         description=""
+                         handlerName="Script"
+                         name="SetCachedPropertiesSUB">
+                            <ConfigurationTables>
+                                <ConfigurationTable
+                                 dataShapeName=""
+                                 description=""
+                                 isMultiRow="false"
+                                 name="Script"
+                                 ordinal="0">
+                                    <DataShape>
+                                        <FieldDefinitions>
+                                            <FieldDefinition
+                                             baseType="STRING"
+                                             description="code"
+                                             name="code"
+                                             ordinal="0"></FieldDefinition>
+                                        </FieldDefinitions>
+                                    </DataShape>
+                                    <Rows>
+                                        <Row>
+                                            <code>
+                                            <![CDATA[
+                                            me.SetCachedProperties();
+                                            ]]>
+                                            </code>
+                                        </Row>
+                                    </Rows>
+                                </ConfigurationTable>
+                            </ConfigurationTables>
+                        </ServiceImplementation>
+                    </Subscription>
+                </Subscriptions>
             </ThingShape>
             <PropertyBindings></PropertyBindings>
             <RemotePropertyBindings></RemotePropertyBindings>
             <RemoteServiceBindings></RemoteServiceBindings>
             <RemoteEventBindings></RemoteEventBindings>
-            <AlertConfigurations></AlertConfigurations>
+            <AlertConfigurations>
+                <AlertDefinitions
+                 name="CURRENT_ACTIVE_USERS"></AlertDefinitions>
+                <AlertDefinitions
+                 name="TOTAL_USER_COUNT"></AlertDefinitions>
+            </AlertConfigurations>
             <ImplementedShapes></ImplementedShapes>
-            <ThingProperties>
-                <CacheDetails>
-                    <Value>
-                        <infoTable>
-                            <DataShape>
-                                <FieldDefinitions>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="Associativity"
-                                     ordinal="4"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="ID"
-                                     ordinal="5"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="Level"
-                                     ordinal="2"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     aspect.units="B"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="Size"
-                                     ordinal="1"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="STRING"
-                                     description=""
-                                     name="Type"
-                                     ordinal="3"></FieldDefinition>
-                                </FieldDefinitions>
-                            </DataShape>
-                            <Rows></Rows>
-                        </infoTable>
-                    </Value>
-                    <Timestamp>1970-01-01T00:00:00.000Z</Timestamp>
-                    <Quality>UNKNOWN</Quality>
-                </CacheDetails>
-                <DiskInfo>
-                    <Value>
-                        <infoTable>
-                            <DataShape>
-                                <FieldDefinitions>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="CurrentQueueLength"
-                                     ordinal="6"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="STRING"
-                                     description=""
-                                     name="Model"
-                                     ordinal="5"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="STRING"
-                                     description=""
-                                     name="Name"
-                                     ordinal="10"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.dataShape="TWX.Metrices.PartitionInfo_DS"
-                                     aspect.isPrimaryKey="false"
-                                     baseType="INFOTABLE"
-                                     description=""
-                                     name="partitions"
-                                     ordinal="2"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="ReadBytes"
-                                     ordinal="8"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="Reads"
-                                     ordinal="9"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="Size"
-                                     ordinal="4"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="DATETIME"
-                                     description=""
-                                     name="Timestamp"
-                                     ordinal="1"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="TransferTime"
-                                     ordinal="11"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="WriteBytes"
-                                     ordinal="3"></FieldDefinition>
-                                    <FieldDefinition
-                                     aspect.isPrimaryKey="false"
-                                     baseType="NUMBER"
-                                     description=""
-                                     name="Writes"
-                                     ordinal="7"></FieldDefinition>
-                                </FieldDefinitions>
-                            </DataShape>
-                            <Rows></Rows>
-                        </infoTable>
-                    </Value>
-                    <Timestamp>1970-01-01T00:00:00.000Z</Timestamp>
-                    <Quality>UNKNOWN</Quality>
-                </DiskInfo>
-            </ThingProperties>
+            <ThingProperties></ThingProperties>
         </Thing>
     </Things>
 </Entities>

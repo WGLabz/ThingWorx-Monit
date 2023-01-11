@@ -92,17 +92,17 @@
                             </DataShape>
                             <Rows>
                                 <Row>
-                                    <AvilableMemory>3.1314300928E10</AvilableMemory>
+                                    <AvilableMemory>3.0948675584E10</AvilableMemory>
                                     <MempryPageSize>4096.0</MempryPageSize>
                                     <TotalMemory>3.3677692928E10</TotalMemory>
                                     <VirtualMem-SwapTotal>8.589930496E9</VirtualMem-SwapTotal>
-                                    <VirtualMem-VirtualInUse>2.363392E9</VirtualMem-VirtualInUse>
+                                    <VirtualMem-VirtualInUse>2.729017344E9</VirtualMem-VirtualInUse>
                                     <VirtualMem-VirtualMax>2.5428774912E10</VirtualMem-VirtualMax>
                                 </Row>
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2022-12-21T07:46:12.343Z</Timestamp>
+                    <Timestamp>2023-01-11T07:41:17.546Z</Timestamp>
                     <Quality>GOOD</Quality>
                 </MemoryInfo>
                 <CPUInfo>
@@ -261,7 +261,7 @@
                                         </infoTable>
                                     </CacheDetails>
                                     <Is64BitProcessor>true</Is64BitProcessor>
-                                    <LastRefresh>2022-12-21T07:46:12.323Z</LastRefresh>
+                                    <LastRefresh>2023-01-11T07:41:17.528Z</LastRefresh>
                                     <PhysicalProcessorCount>4.0</PhysicalProcessorCount>
                                     <ProcessorArchitecture>
                                     <![CDATA[
@@ -289,7 +289,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2022-12-21T07:46:12.324Z</Timestamp>
+                    <Timestamp>2023-01-11T07:41:17.529Z</Timestamp>
                     <Quality>GOOD</Quality>
                 </CPUInfo>
                 <PhysicalMemory>
@@ -371,7 +371,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2022-12-21T07:46:12.344Z</Timestamp>
+                    <Timestamp>2023-01-11T07:41:17.546Z</Timestamp>
                     <Quality>GOOD</Quality>
                 </PhysicalMemory>
                 <DiskInfo>
@@ -385,6 +385,12 @@
                                      description=""
                                      name="CurrentQueueLength"
                                      ordinal="6"></FieldDefinition>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="true"
+                                     baseType="NUMBER"
+                                     description=""
+                                     name="ID"
+                                     ordinal="12"></FieldDefinition>
                                     <FieldDefinition
                                      aspect.isPrimaryKey="false"
                                      baseType="STRING"
@@ -451,6 +457,7 @@
                             <Rows>
                                 <Row>
                                     <CurrentQueueLength>0.0</CurrentQueueLength>
+                                    <ID>0.0</ID>
                                     <Model>
                                     <![CDATA[
                                     Virtual_disk
@@ -461,13 +468,13 @@
                                     /dev/sda
                                     ]]>
                                     </Name>
-                                    <ReadBytes>1.52000256E9</ReadBytes>
-                                    <Reads>69751.0</Reads>
+                                    <ReadBytes>1.520621056E9</ReadBytes>
+                                    <Reads>69780.0</Reads>
                                     <Size>1.073741824E11</Size>
-                                    <Timestamp>2022-12-20T09:59:50.623Z</Timestamp>
-                                    <TransferTime>8.9245972E7</TransferTime>
-                                    <WriteBytes>8.97980760064E11</WriteBytes>
-                                    <Writes>1.37955297E8</Writes>
+                                    <Timestamp>2023-01-11T07:50:32.957Z</Timestamp>
+                                    <TransferTime>9.3650388E7</TransferTime>
+                                    <WriteBytes>9.3802186752E11</WriteBytes>
+                                    <Writes>1.43949972E8</Writes>
                                     <partitions>
                                         <infoTable>
                                             <DataShape>
@@ -761,6 +768,7 @@
                                 </Row>
                                 <Row>
                                     <CurrentQueueLength>0.0</CurrentQueueLength>
+                                    <ID>1.0</ID>
                                     <Model>
                                     <![CDATA[
                                     Virtual_disk
@@ -774,7 +782,7 @@
                                     <ReadBytes>2.3977984E7</ReadBytes>
                                     <Reads>3832.0</Reads>
                                     <Size>4.294967296E11</Size>
-                                    <Timestamp>2022-12-20T09:59:50.634Z</Timestamp>
+                                    <Timestamp>2023-01-11T07:50:32.964Z</Timestamp>
                                     <TransferTime>44332.0</TransferTime>
                                     <WriteBytes>73728.0</WriteBytes>
                                     <Writes>14.0</Writes>
@@ -855,6 +863,7 @@
                                 </Row>
                                 <Row>
                                     <CurrentQueueLength>0.0</CurrentQueueLength>
+                                    <ID>2.0</ID>
                                     <Model>
                                     <![CDATA[
                                     VMware_Virtual_SATA_CDRW_Drive
@@ -868,7 +877,7 @@
                                     <ReadBytes>0.0</ReadBytes>
                                     <Reads>0.0</Reads>
                                     <Size>1.073741312E9</Size>
-                                    <Timestamp>2022-12-20T09:59:50.636Z</Timestamp>
+                                    <Timestamp>2023-01-11T07:50:32.965Z</Timestamp>
                                     <TransferTime>0.0</TransferTime>
                                     <WriteBytes>0.0</WriteBytes>
                                     <Writes>0.0</Writes>
@@ -921,7 +930,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2022-12-20T09:59:50.649Z</Timestamp>
+                    <Timestamp>2023-01-11T07:50:32.970Z</Timestamp>
                     <Quality>GOOD</Quality>
                 </DiskInfo>
             </ThingProperties>

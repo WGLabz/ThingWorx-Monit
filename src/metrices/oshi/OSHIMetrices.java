@@ -73,6 +73,7 @@ public class OSHIMetrices {
     ObjectMapper mapper = new ObjectMapper();
 
     List<HWDiskStore> disks = this.hal.getDiskStores();
+    //this.os.filest
 
     JSONArray disksArray = new JSONArray();
 

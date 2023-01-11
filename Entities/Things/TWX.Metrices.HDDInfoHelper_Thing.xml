@@ -12,7 +12,7 @@
          homeMashup=""
          identifier=""
          inheritedValueStream=""
-         name="TWX.Metrices.MainPageHelper_Thing"
+         name="TWX.Metrices.HDDInfoHelper_Thing"
          projectName="TempTWXMetrices"
          published="false"
          tags=""
@@ -43,57 +43,9 @@
                      isLocalOnly="false"
                      isOpen="false"
                      isPrivate="false"
-                     name="GetHDDInfo">
+                     name="GetDisks">
                         <ResultType
-                         baseType="STRING"
-                         description=""
-                         name="result"
-                         ordinal="0"></ResultType>
-                        <ParameterDefinitions></ParameterDefinitions>
-                    </ServiceDefinition>
-                    <ServiceDefinition
-                     aspect.isAsync="false"
-                     category=""
-                     description=""
-                     isAllowOverride="false"
-                     isLocalOnly="false"
-                     isOpen="false"
-                     isPrivate="false"
-                     name="GetMemoryDetails">
-                        <ResultType
-                         baseType="STRING"
-                         description=""
-                         name="result"
-                         ordinal="0"></ResultType>
-                        <ParameterDefinitions></ParameterDefinitions>
-                    </ServiceDefinition>
-                    <ServiceDefinition
-                     aspect.isAsync="false"
-                     category="CPU"
-                     description=""
-                     isAllowOverride="true"
-                     isLocalOnly="false"
-                     isOpen="false"
-                     isPrivate="false"
-                     name="GetProcessorInformation">
-                        <ResultType
-                         aspect.dataShape="TWX.Metrices.ProcessorInfo_DS"
-                         baseType="STRING"
-                         description=""
-                         name="result"
-                         ordinal="0"></ResultType>
-                        <ParameterDefinitions></ParameterDefinitions>
-                    </ServiceDefinition>
-                    <ServiceDefinition
-                     aspect.isAsync="false"
-                     category=""
-                     description=""
-                     isAllowOverride="false"
-                     isLocalOnly="false"
-                     isOpen="false"
-                     isPrivate="false"
-                     name="GetRAMUsage">
-                        <ResultType
+                         aspect.dataShape="TWX.Metrices.DiskInfo_DS"
                          baseType="INFOTABLE"
                          description=""
                          name="result"
@@ -108,7 +60,7 @@
                      isLocalOnly="false"
                      isOpen="false"
                      isPrivate="false"
-                     name="GetUserStatLabel">
+                     name="GetDisMashupTitle">
                         <ResultType
                          baseType="STRING"
                          description=""
@@ -118,15 +70,31 @@
                     </ServiceDefinition>
                     <ServiceDefinition
                      aspect.isAsync="false"
-                     category="Config"
+                     category=""
                      description=""
                      isAllowOverride="true"
                      isLocalOnly="false"
                      isOpen="false"
                      isPrivate="false"
-                     name="InitializeCaches">
+                     name="GetTotalDiskSize">
                         <ResultType
-                         baseType="NOTHING"
+                         baseType="NUMBER"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="true"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetUsedMemorySize">
+                        <ResultType
+                         baseType="NUMBER"
                          description=""
                          name="result"
                          ordinal="0"></ResultType>
@@ -139,7 +107,85 @@
                     <ServiceImplementation
                      description=""
                      handlerName="Script"
-                     name="GetHDDInfo">
+                     name="GetDisks">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        let result = Things["TWX.Metrices.OSHIController_Thing"].FetchDiskInfo();
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetDisMashupTitle">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var diskInfo = Things["TWX.Metrices.OSHIController_Thing"].DiskInfo;
+                                        
+                                        if(!diskInfo){
+                                            Things["TWX.Metrices.OSHIController_Thing"].InitCache();
+                                            diskInfo = Things["TWX.Metrices.OSHIController_Thing"].DiskInfo;
+                                        }
+                                        
+                                        let params = {
+                                        	t: diskInfo,
+                                        	columns: "Size",
+                                        	aggregates: "SUM",
+                                           	groupByColumns:"" 
+                                        };
+                                        let usedMem =345;  
+                                        let result = diskInfo.length+" Drives | "+Math.ceil(Resources["InfoTableFunctions"].Aggregate(params).rows[0].SUM_Size / 1073741824) +" GB | "+usedMem+" GB Used";
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetTotalDiskSize">
                         <ConfigurationTables>
                             <ConfigurationTable
                              dataShapeName=""
@@ -174,7 +220,7 @@
                                            	groupByColumns:"" 
                                         };
                                         
-                                        let result = Math.ceil(Resources["InfoTableFunctions"].Aggregate(params).rows[0].SUM_Size / 1073741824) +" GB | "+diskInfo.length+" Drives";
+                                        let result = (Resources["InfoTableFunctions"].Aggregate(params).rows[0].SUM_Size / 1073741824).toFixed(3) ;
                                         ]]>
                                         </code>
                                     </Row>
@@ -185,7 +231,7 @@
                     <ServiceImplementation
                      description=""
                      handlerName="Script"
-                     name="GetMemoryDetails">
+                     name="GetUsedMemorySize">
                         <ConfigurationTables>
                             <ConfigurationTable
                              dataShapeName=""
@@ -206,150 +252,9 @@
                                     <Row>
                                         <code>
                                         <![CDATA[
-                                        var memoryInfo = Things["TWX.Metrices.OSHIController_Thing"].MemoryInfo;
-                                        if(!memoryInfo){
-                                        	Things["TWX.Metrices.OSHIController_Thing"].InitCache();
-                                            memoryInfo = Things["TWX.Metrices.OSHIController_Thing"].MemoryInfo;
-                                        }
-                                        memoryInfo = Things["TWX.Metrices.OSHIController_Thing"].MemoryInfo.rows[0];
-                                        
-                                        var result = Math.ceil(memoryInfo.TotalMemory/1073741824)+' GB Physical ['+Math.ceil(memoryInfo.AvilableMemory / 1073741824)+' GB Avaialble] | '+Things["TWX.Metrices.OSHIController_Thing"].PhysicalMemory.length + ' Sticks';
+                                        let result = 50; // In GB
                                         ]]>
                                         </code>
-                                    </Row>
-                                </Rows>
-                            </ConfigurationTable>
-                        </ConfigurationTables>
-                    </ServiceImplementation>
-                    <ServiceImplementation
-                     description=""
-                     handlerName="Script"
-                     name="GetProcessorInformation">
-                        <ConfigurationTables>
-                            <ConfigurationTable
-                             dataShapeName=""
-                             description=""
-                             isMultiRow="false"
-                             name="Script"
-                             ordinal="0">
-                                <DataShape>
-                                    <FieldDefinitions>
-                                        <FieldDefinition
-                                         baseType="STRING"
-                                         description="code"
-                                         name="code"
-                                         ordinal="0"></FieldDefinition>
-                                    </FieldDefinitions>
-                                </DataShape>
-                                <Rows>
-                                    <Row>
-                                        <code>
-                                        <![CDATA[
-                                        var cpuInfo = Things["TWX.Metrices.OSHIController_Thing"].CPUInfo.rows[0];
-                                        
-                                        var result = (cpuInfo.Is64BitProcessor ? '64 Bit' : '32 Bit' )+' '+ cpuInfo.ProcessorVendor + ' '+cpuInfo.ProcessorLogicalCoreCount +' Core ' + cpuInfo.ProcessorName;
-                                        ]]>
-                                        </code>
-                                    </Row>
-                                </Rows>
-                            </ConfigurationTable>
-                        </ConfigurationTables>
-                    </ServiceImplementation>
-                    <ServiceImplementation
-                     description=""
-                     handlerName="Script"
-                     name="GetRAMUsage">
-                        <ConfigurationTables>
-                            <ConfigurationTable
-                             dataShapeName=""
-                             description=""
-                             isMultiRow="false"
-                             name="Script"
-                             ordinal="0">
-                                <DataShape>
-                                    <FieldDefinitions>
-                                        <FieldDefinition
-                                         baseType="STRING"
-                                         description="code"
-                                         name="code"
-                                         ordinal="0"></FieldDefinition>
-                                    </FieldDefinitions>
-                                </DataShape>
-                                <Rows>
-                                    <Row>
-                                        <code>
-                                        <![CDATA[
-                                        let result = Things["TWX.Metrices.HistoricData_Stream"].GetHistoricData({
-                                        	EndTime: undefined /* DATETIME */,
-                                        	StartTime: undefined /* DATETIME */,
-                                        	Metric: "RAM_USE" /* STRING */
-                                        });
-                                        ]]>
-                                        </code>
-                                    </Row>
-                                </Rows>
-                            </ConfigurationTable>
-                        </ConfigurationTables>
-                    </ServiceImplementation>
-                    <ServiceImplementation
-                     description=""
-                     handlerName="Script"
-                     name="GetUserStatLabel">
-                        <ConfigurationTables>
-                            <ConfigurationTable
-                             dataShapeName=""
-                             description=""
-                             isMultiRow="false"
-                             name="Script"
-                             ordinal="0">
-                                <DataShape>
-                                    <FieldDefinitions>
-                                        <FieldDefinition
-                                         baseType="STRING"
-                                         description="code"
-                                         name="code"
-                                         ordinal="0"></FieldDefinition>
-                                    </FieldDefinitions>
-                                </DataShape>
-                                <Rows>
-                                    <Row>
-                                        <code>
-                                        <![CDATA[
-                                        var result= "";
-                                        (()=>{
-                                            let platformMetrics =  Things["TWX.Metrices.Platformmetrices_Thing"];
-                                        	result =platformMetrics.CURRENT_ACTIVE_USERS+"/"+platformMetrics.TOTAL_USER_COUNT+" Active Users";
-                                        })();
-                                        ]]>
-                                        </code>
-                                    </Row>
-                                </Rows>
-                            </ConfigurationTable>
-                        </ConfigurationTables>
-                    </ServiceImplementation>
-                    <ServiceImplementation
-                     description=""
-                     handlerName="Script"
-                     name="InitializeCaches">
-                        <ConfigurationTables>
-                            <ConfigurationTable
-                             dataShapeName=""
-                             description=""
-                             isMultiRow="false"
-                             name="Script"
-                             ordinal="0">
-                                <DataShape>
-                                    <FieldDefinitions>
-                                        <FieldDefinition
-                                         baseType="STRING"
-                                         description="code"
-                                         name="code"
-                                         ordinal="0"></FieldDefinition>
-                                    </FieldDefinitions>
-                                </DataShape>
-                                <Rows>
-                                    <Row>
-                                        <code></code>
                                     </Row>
                                 </Rows>
                             </ConfigurationTable>

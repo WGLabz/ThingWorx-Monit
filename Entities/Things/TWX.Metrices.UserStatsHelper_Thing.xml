@@ -3,18 +3,20 @@
  majorVersion="9"
  minorVersion="3"
  universal="">
-    <ThingTemplates>
-        <ThingTemplate
-         baseThingTemplate="GenericThing"
+    <Things>
+        <Thing
          description=""
          documentationContent=""
          effectiveThingPackage="ConfiguredThing"
+         enabled="true"
          homeMashup=""
+         identifier=""
          inheritedValueStream=""
-         name="TWX.Metrices.Platformmetrices_TT"
+         name="TWX.Metrices.UserStatsHelper_Thing"
          projectName="TempTWXMetrices"
+         published="false"
          tags=""
-         thingPackage=""
+         thingTemplate="GenericThing"
          valueStream="">
             <avatar></avatar>
             <DesignTimePermissions>
@@ -30,11 +32,6 @@
             </VisibilityPermissions>
             <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
             <ConfigurationTables></ConfigurationTables>
-            <PropertyBindings></PropertyBindings>
-            <RemotePropertyBindings></RemotePropertyBindings>
-            <RemoteServiceBindings></RemoteServiceBindings>
-            <RemoteEventBindings></RemoteEventBindings>
-            <AlertConfigurations></AlertConfigurations>
             <ThingShape>
                 <PropertyDefinitions></PropertyDefinitions>
                 <ServiceDefinitions>
@@ -42,17 +39,29 @@
                      aspect.isAsync="false"
                      category=""
                      description=""
-                     isAllowOverride="true"
+                     isAllowOverride="false"
                      isLocalOnly="false"
                      isOpen="false"
                      isPrivate="false"
-                     name="GetLicenseAndEntitiesInfo">
+                     name="GetActiveUserAndSessionHistory">
                         <ResultType
+                         aspect.dataShape="TWX.Metrices.ActiveUsersAndSessions_DS"
                          baseType="INFOTABLE"
                          description=""
                          name="result"
                          ordinal="0"></ResultType>
-                        <ParameterDefinitions></ParameterDefinitions>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="DATETIME"
+                             description=""
+                             name="EndDate"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="DATETIME"
+                             description=""
+                             name="StartDate"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
                     </ServiceDefinition>
                 </ServiceDefinitions>
                 <EventDefinitions></EventDefinitions>
@@ -61,7 +70,7 @@
                     <ServiceImplementation
                      description=""
                      handlerName="Script"
-                     name="GetLicenseAndEntitiesInfo">
+                     name="GetActiveUserAndSessionHistory">
                         <ConfigurationTables>
                             <ConfigurationTable
                              dataShapeName=""
@@ -82,13 +91,13 @@
                                     <Row>
                                         <code>
                                         <![CDATA[
-                                        // result: INFOTABLE dataShape: "EntityCount"
-                                        //let result = Subsystems["PlatformSubsystem"].GetEntityCount({
-                                        //	modelTags: undefined /* TAGS */,
-                                        //	type: undefined /* STRING */
-                                        //});
-                                        
-                                        //let result = Subsystems["LicensingSubsystem"].GetCurrentLicenseInfo();
+                                        var result = DataShapes["TWX.Metrices.ActiveUsersAndSessions_DS"].CreateValues();
+                                        (() => {
+                                          result = Things["TWX.Metrices.HistoricDataHelper_Thing"].GetUserAndSessionsHistory(
+                                              {StartDate:StartDate,
+                                              EndDate: EndDate}
+                                          );
+                                        })();
                                         ]]>
                                         </code>
                                     </Row>
@@ -99,19 +108,13 @@
                 </ServiceImplementations>
                 <Subscriptions></Subscriptions>
             </ThingShape>
+            <PropertyBindings></PropertyBindings>
+            <RemotePropertyBindings></RemotePropertyBindings>
+            <RemoteServiceBindings></RemoteServiceBindings>
+            <RemoteEventBindings></RemoteEventBindings>
+            <AlertConfigurations></AlertConfigurations>
             <ImplementedShapes></ImplementedShapes>
-            <SharedConfigurationTables></SharedConfigurationTables>
-            <InstanceDesignTimePermissions>
-                <Create></Create>
-                <Read></Read>
-                <Update></Update>
-                <Delete></Delete>
-                <Metadata></Metadata>
-            </InstanceDesignTimePermissions>
-            <InstanceRunTimePermissions></InstanceRunTimePermissions>
-            <InstanceVisibilityPermissions>
-                <Visibility></Visibility>
-            </InstanceVisibilityPermissions>
-        </ThingTemplate>
-    </ThingTemplates>
+            <ThingProperties></ThingProperties>
+        </Thing>
+    </Things>
 </Entities>

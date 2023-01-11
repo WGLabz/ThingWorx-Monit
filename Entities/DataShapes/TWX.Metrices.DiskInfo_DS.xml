@@ -34,6 +34,12 @@
                  name="CurrentQueueLength"
                  ordinal="6"></FieldDefinition>
                 <FieldDefinition
+                 aspect.isPrimaryKey="true"
+                 baseType="NUMBER"
+                 description=""
+                 name="ID"
+                 ordinal="12"></FieldDefinition>
+                <FieldDefinition
                  aspect.isPrimaryKey="false"
                  baseType="STRING"
                  description=""
