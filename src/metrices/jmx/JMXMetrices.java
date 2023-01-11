@@ -40,7 +40,7 @@ public class JMXMetrices {
 		
 // 		Non-HEAP Usage	values are in Bytes
 
-		MemoryUsage nonHeapMem = memoryMXBean.getHeapMemoryUsage();
+		MemoryUsage nonHeapMem = memoryMXBean.getNonHeapMemoryUsage();
 
 		memory.put("INITIAL_NON_HEAP",nonHeapMem.getInit() );
 		memory.put("USED_NON_HEAP",nonHeapMem.getUsed() );
@@ -72,7 +72,6 @@ public class JMXMetrices {
 		return response;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public JSONObject getCPULoadAndMEM() throws JSONException {
 		OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(
                 OperatingSystemMXBean.class);
@@ -80,13 +79,13 @@ public class JMXMetrices {
 		JSONObject cpu = new JSONObject();
 
 		cpu.put("JVM_CPU_%", osBean.getProcessCpuLoad());
-		cpu.put("TOTAL_CPU_%", osBean.getSystemCpuLoad());
+		cpu.put("TOTAL_CPU_%", osBean.getCpuLoad());
 		
 
-		cpu.put("FREE_MEMORY", osBean.getFreePhysicalMemorySize());
+		cpu.put("FREE_MEMORY", osBean.getFreeMemorySize());
 		cpu.put("FREE_SWAP_MEMORY", osBean.getFreeSwapSpaceSize());
 		cpu.put("TOTAL_SWAP_MEMORY", osBean.getTotalSwapSpaceSize());
-		cpu.put("TOTAL_MEMORY", osBean.getTotalPhysicalMemorySize());
+		cpu.put("TOTAL_MEMORY", osBean.getTotalMemorySize());
 		cpu.put("SYS_LOAD_AVG", osBean.getSystemLoadAverage());
 		
 		return cpu;

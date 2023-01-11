@@ -2,20 +2,19 @@
 <Entities
  majorVersion="9"
  minorVersion="3"
- universal="">
+ universal="password">
     <Projects>
         <Project
          artifactId=""
-         aspect.projectType="Component"
-         dependsOn="{&quot;extensions&quot;:&quot;ThingWorx Metrices:1.0.2&quot;,&quot;projects&quot;:&quot;&quot;}"
+         dependsOn="{&quot;extensions&quot;:&quot;ThingWorx Metrices:1.0.0&quot;,&quot;projects&quot;:&quot;&quot;}"
          description=""
          documentationContent=""
          groupId=""
          homeMashup=""
          minPlatformVersion=""
-         name="TempTWXMetrices"
+         name="TWXMetricesExtension"
          packageVersion="1.0.0"
-         projectName="TempTWXMetrices"
+         projectName="TWXMetricesExtension"
          publishResult=""
          state="DRAFT"
          tags="">

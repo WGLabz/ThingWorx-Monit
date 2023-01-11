@@ -2,21 +2,21 @@
 <Entities
  majorVersion="9"
  minorVersion="3"
- universal="">
+ universal="password">
     <Things>
         <Thing
          description=""
          documentationContent=""
-         effectiveThingPackage="ConfiguredThing"
+         effectiveThingPackage="JMXMetrices_TTPackage"
          enabled="true"
          homeMashup=""
          identifier=""
          inheritedValueStream=""
-         name="TWX.Metrices.JMXMetricesController_Thing"
-         projectName="TempTWXMetrices"
+         name="JMXMetrices_Thing"
+         projectName="TWXMetricesExtension"
          published="false"
          tags=""
-         thingTemplate="TWX.Metrices.JMXMetricesController_TT"
+         thingTemplate="JMXMetrices_TT"
          valueStream="">
             <avatar></avatar>
             <DesignTimePermissions>
