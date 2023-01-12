@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="3"
+ universal="">
+    <ThingTemplates>
+        <ThingTemplate
+         baseThingTemplate="GenericThing"
+         description=""
+         documentationContent=""
+         effectiveThingPackage="ConfiguredThing"
+         homeMashup=""
+         inheritedValueStream=""
+         name="TWX.Metrices.JMXMetricesController_TT"
+         projectName="TempTWXMetrices"
+         tags=""
+         thingPackage=""
+         valueStream="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <PropertyBindings></PropertyBindings>
+            <RemotePropertyBindings></RemotePropertyBindings>
+            <RemoteServiceBindings></RemoteServiceBindings>
+            <RemoteEventBindings></RemoteEventBindings>
+            <AlertConfigurations></AlertConfigurations>
+            <ThingShape>
+                <PropertyDefinitions></PropertyDefinitions>
+                <ServiceDefinitions>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category="NotCached"
+                     description=""
+                     isAllowOverride="true"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="FetchCPUAndMemoryInfo">
+                        <ResultType
+                         aspect.dataShape="TWX.Metrices.JMXMetrices"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="true"
+                     category=""
+                     description=""
+                     isAllowOverride="true"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="SetCachedProperties">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                </ServiceDefinitions>
+                <EventDefinitions></EventDefinitions>
+                <ServiceMappings></ServiceMappings>
+                <ServiceImplementations>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="FetchCPUAndMemoryInfo">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        let Values = DataShapes["TWX.Metrices.JMXMetrices"].CreateValues();
+                                        let ThreadInfo = DataShapes["TWX.Metrices.ThreadInfo"].CreateValues();
+                                        
+                                        var cpuAndMEM = Things['JMXMetrices_Thing'].GetCPULoadAndMem();
+                                        var jmxMetrices = Things['JMXMetrices_Thing'].GetJMXMetrices();
+                                        
+                                        jmxMetrices.THREADS.map((thread, index) => {
+                                            ThreadInfo.AddRow({
+                                                ID: index,
+                                                STATE: thread.STATE,
+                                                CPU_TIME: thread.CPU_TIME,
+                                                NAME: thread.NAME
+                                            });
+                                        });
+                                        
+                                        Values.AddRow({
+                                            'SYS_LOAD_AVG': cpuAndMEM.SYS_LOAD_AVG,
+                                            'TOTAL_CPUPercentage': cpuAndMEM['TOTAL_CPU_%'],
+                                            'TOTAL_SWAP_MEMORY': cpuAndMEM.TOTAL_SWAP_MEMORY,
+                                            'FREE_MEMORY': cpuAndMEM.FREE_MEMORY,
+                                            'FREE_SWAP_MEMORY': cpuAndMEM.FREE_SWAP_MEMORY,
+                                            'TOTAL_MEMORY': cpuAndMEM.TOTAL_MEMORY,
+                                            'JVM_CPUPercentage': cpuAndMEM['JVM_CPU_%'],
+                                            'USED_HEAP': jmxMetrices.MEM.USED_HEAP,
+                                            'MAX_HEAP': jmxMetrices.MEM.MAX_HEAP,
+                                            'COMMITED_HEAP': jmxMetrices.MEM.COMMITED_HEAP,
+                                            'INITIAL_NON_HEAP': jmxMetrices.MEM.INITIAL_NON_HEAP,
+                                            'USED_NON_HEAP': jmxMetrices.MEM.USED_NON_HEAP,
+                                            'INITIAL_HEAP': jmxMetrices.MEM.INITIAL_HEAP,
+                                            'COMMITED_NON_HEAP': jmxMetrices.MEM.COMMITED_NON_HEAP,
+                                            'MAX_NON_HEAP': jmxMetrices.MEM.MAX_NON_HEAP,
+                                            'ThreadInfo': ThreadInfo
+                                        });
+                                        
+                                        result = Values;
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="SetCachedProperties">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        (() => {
+                                            var cpuAndMEM = Things['JMXMetrices_Thing'].GetCPULoadAndMem();
+                                            var jmxMetrices = Things['JMXMetrices_Thing'].GetJMXMetrices();
+                                        	
+                                            var processesInformation = Things['TWX.Metrices.OSHIController_Thing'].FetchProcesses();
+                                            
+                                            let cpuUsage = 0;
+                                            processesInformation.rows.toArray().forEach(row => {
+                                           		cpuUsage = cpuUsage + row.CPUPercentage;
+                                        	});
+                                         	Things['TWX.Metrices.HistoricDataHelper_Thing'].CPU_USE_PERCENTAGE = cpuUsage;
+                                            Things['TWX.Metrices.HistoricDataHelper_Thing'].MEMORY_METRICES_JMX = JSON.stringify({
+                                                'TOTAL_SWAP_MEMORY': cpuAndMEM.TOTAL_SWAP_MEMORY,
+                                                'FREE_MEMORY': cpuAndMEM.FREE_MEMORY,
+                                                'FREE_SWAP_MEMORY': cpuAndMEM.FREE_SWAP_MEMORY,
+                                                'TOTAL_MEMORY': cpuAndMEM.TOTAL_MEMORY,
+                                                'USED_HEAP': jmxMetrices.MEM.USED_HEAP,
+                                                'MAX_HEAP': jmxMetrices.MEM.MAX_HEAP,
+                                                'COMMITED_HEAP': jmxMetrices.MEM.COMMITED_HEAP,
+                                                'INITIAL_NON_HEAP': jmxMetrices.MEM.INITIAL_NON_HEAP,
+                                                'USED_NON_HEAP': jmxMetrices.MEM.USED_NON_HEAP,
+                                                'INITIAL_HEAP': jmxMetrices.MEM.INITIAL_HEAP,
+                                                'COMMITED_NON_HEAP': jmxMetrices.MEM.COMMITED_NON_HEAP,
+                                                'MAX_NON_HEAP': jmxMetrices.MEM.MAX_NON_HEAP,
+                                            });
+                                        
+                                        })();
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                </ServiceImplementations>
+                <Subscriptions>
+                    <Subscription
+                     description=""
+                     enabled="true"
+                     eventName="Timer"
+                     name="SetCachedProperties_SUB"
+                     source="TWX.Metrices.BackendTimer_Thing"
+                     sourceProperty=""
+                     sourceType="Thing">
+                        <ServiceImplementation
+                         description=""
+                         handlerName="Script"
+                         name="SetCachedProperties_SUB">
+                            <ConfigurationTables>
+                                <ConfigurationTable
+                                 dataShapeName=""
+                                 description=""
+                                 isMultiRow="false"
+                                 name="Script"
+                                 ordinal="0">
+                                    <DataShape>
+                                        <FieldDefinitions>
+                                            <FieldDefinition
+                                             baseType="STRING"
+                                             description="code"
+                                             name="code"
+                                             ordinal="0"></FieldDefinition>
+                                        </FieldDefinitions>
+                                    </DataShape>
+                                    <Rows>
+                                        <Row>
+                                            <code>
+                                            <![CDATA[
+                                            me.SetCachedProperties();
+                                            ]]>
+                                            </code>
+                                        </Row>
+                                    </Rows>
+                                </ConfigurationTable>
+                            </ConfigurationTables>
+                        </ServiceImplementation>
+                    </Subscription>
+                </Subscriptions>
+            </ThingShape>
+            <ImplementedShapes></ImplementedShapes>
+            <SharedConfigurationTables></SharedConfigurationTables>
+            <InstanceDesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </InstanceDesignTimePermissions>
+            <InstanceRunTimePermissions></InstanceRunTimePermissions>
+            <InstanceVisibilityPermissions>
+                <Visibility></Visibility>
+            </InstanceVisibilityPermissions>
+        </ThingTemplate>
+    </ThingTemplates>
+</Entities>
