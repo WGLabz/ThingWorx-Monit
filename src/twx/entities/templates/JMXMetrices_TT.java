@@ -3,6 +3,7 @@ package twx.entities.templates;
 import com.thingworx.logging.LogUtilities;
 import com.thingworx.metadata.annotations.ThingworxBaseTemplateDefinition;
 import com.thingworx.metadata.annotations.ThingworxServiceDefinition;
+import com.thingworx.metadata.annotations.ThingworxServiceParameter;
 import com.thingworx.metadata.annotations.ThingworxServiceResult;
 import com.thingworx.things.Thing;
 import metrices.jmx.JMXMetrices;
@@ -72,4 +73,24 @@ public class JMXMetrices_TT extends Thing {
       return null;
     }
   }
+
+@ThingworxServiceDefinition(name = "GetDiskSpaceInfo", description = "", category = "", isAllowOverride = false, aspects = {
+		"isAsync:false" })
+@ThingworxServiceResult(name = "Result", description = "", baseType = "JSON", aspects = {})
+public JSONObject GetDiskSpaceInfo(
+		@ThingworxServiceParameter(name = "DrivePath", description = "", baseType = "STRING", aspects = {}) String DrivePath) {
+	_logger.trace("Entering Service: GetDiskSpaceInfo");
+	JMXMetrices jmx = new JMXMetrices();
+	try {
+		return jmx.getDiskSizeMetrices(DrivePath);
+	}catch(Exception e) {
+
+	      _logger.error("Error in JMXMetrices_TT: GetDiskSpaceInfo " + e);
+	}
+	_logger.trace("Exiting Service: GetDiskSpaceInfo");
+	
+	return null;
+}
+  
+  
 }

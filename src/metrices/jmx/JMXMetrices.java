@@ -1,5 +1,6 @@
 package metrices.jmx;
 
+import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryUsage;
@@ -72,6 +73,7 @@ public class JMXMetrices {
 		return response;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public JSONObject getCPULoadAndMEM() throws JSONException {
 		OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(
                 OperatingSystemMXBean.class);
@@ -79,13 +81,12 @@ public class JMXMetrices {
 		JSONObject cpu = new JSONObject();
 
 		cpu.put("JVM_CPU_%", osBean.getProcessCpuLoad());
-		cpu.put("TOTAL_CPU_%", osBean.getCpuLoad());
+		cpu.put("TOTAL_CPU_%", osBean.getSystemCpuLoad());
 		
-
-		cpu.put("FREE_MEMORY", osBean.getFreeMemorySize());
+		cpu.put("FREE_MEMORY", osBean.getFreePhysicalMemorySize());
 		cpu.put("FREE_SWAP_MEMORY", osBean.getFreeSwapSpaceSize());
 		cpu.put("TOTAL_SWAP_MEMORY", osBean.getTotalSwapSpaceSize());
-		cpu.put("TOTAL_MEMORY", osBean.getTotalMemorySize());
+		cpu.put("TOTAL_MEMORY", osBean.getTotalPhysicalMemorySize());
 		cpu.put("SYS_LOAD_AVG", osBean.getSystemLoadAverage());
 		
 		return cpu;
@@ -93,5 +94,16 @@ public class JMXMetrices {
 		
 	}
 	
+	public JSONObject getDiskSizeMetrices(String drivePath) throws JSONException {
+		
+		JSONObject disk = new JSONObject();
+		
+		File drive = new File(drivePath);
+		disk.put("TOTAL", drive.getTotalSpace());
+		disk.put("FREE", drive.getFreeSpace());
+		disk.put("USABLE", drive.getUsableSpace());
+		
+		return disk;
+	}
 	
 }
