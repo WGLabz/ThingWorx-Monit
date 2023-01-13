@@ -201,14 +201,6 @@
                   }, {
                     "APIMethod" : "post",
                     "Characteristic" : "Services",
-                    "Id" : "a3d08afc-6d16-4bea-9945-dbeacbed891c",
-                    "Name" : "GetRAMUsage",
-                    "Parameters" : { },
-                    "RefreshInterval" : 0,
-                    "Target" : "GetRAMUsage"
-                  }, {
-                    "APIMethod" : "post",
-                    "Characteristic" : "Services",
                     "Id" : "f501a0bb-dd87-40e2-ac64-c7a00cd8974a",
                     "Name" : "GetUserStatLabel",
                     "Parameters" : { },
@@ -230,6 +222,14 @@
                     "Parameters" : { },
                     "RefreshInterval" : 0,
                     "Target" : "GetCPUStats"
+                  }, {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "0d4fefcd-1546-4082-974b-394713ba2cac",
+                    "Name" : "GetRemoteThingsLabel",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "GetRemoteThingsLabel"
                   } ]
                 },
                 "UserExtensions" : {
@@ -249,7 +249,7 @@
                 }
               },
               "DataBindings" : [ {
-                "Id" : "af5c3822-faa1-432a-bbe9-414459126a00",
+                "Id" : "1879cc2d-97ef-401b-b956-5dee6ad2cfa3",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -266,7 +266,7 @@
                 "TargetId" : "ptcsbutton-36",
                 "TargetSection" : ""
               }, {
-                "Id" : "840750bf-f2e6-47f2-80fc-36f5c9145f30",
+                "Id" : "2f7d2355-8975-42af-ab26-1079e5333493",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -283,7 +283,7 @@
                 "TargetId" : "ptcsbutton-37",
                 "TargetSection" : ""
               }, {
-                "Id" : "292986be-764a-4e67-8b57-0d47898fa17d",
+                "Id" : "ac0cea83-c083-4298-b611-cb41ea3c019f",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -300,7 +300,7 @@
                 "TargetId" : "ptcsbutton-38",
                 "TargetSection" : ""
               }, {
-                "Id" : "19be1ebc-236e-4adf-9908-9fe582cac8fb",
+                "Id" : "97466b16-52b4-4406-b34b-8d33c4287c13",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -352,6 +352,23 @@
                 "TargetArea" : "UI",
                 "TargetId" : "ptcschartline-80",
                 "TargetSection" : ""
+              }, {
+                "Id" : "f46ffb04-81c1-4eaf-a69a-2ceabb22284e",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "result",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "Label",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "GetRemoteThingsLabel",
+                "SourceSection" : "Things_TWX.Metrices.MainPageHelper_Thing",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsbutton-82",
+                "TargetSection" : ""
               } ],
               "DesignTimePermissions" : {
                 "Create" : [ ],
@@ -388,15 +405,6 @@
                 "EventTriggerSection" : "",
                 "Id" : "d2283737-daac-41aa-8c8a-3dbb25713a86"
               }, {
-                "EventHandlerArea" : "Data",
-                "EventHandlerId" : "Things_TWX.Metrices.MainPageHelper_Thing",
-                "EventHandlerService" : "GetRAMUsage",
-                "EventTriggerArea" : "Mashup",
-                "EventTriggerEvent" : "Loaded",
-                "EventTriggerId" : "mashup-root",
-                "EventTriggerSection" : "",
-                "Id" : "fa368b74-28a0-4939-aa34-49cedfe293f2"
-              }, {
                 "EventHandlerArea" : "UI",
                 "EventHandlerId" : "navigationfunction-69",
                 "EventHandlerService" : "Navigate",
@@ -404,7 +412,7 @@
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-38",
                 "EventTriggerSection" : "",
-                "Id" : "74e6a506-bd11-4db2-bab2-132893ac6bbf"
+                "Id" : "47f85b46-2df4-4c4b-8402-d7d385f37bf5"
               }, {
                 "EventHandlerArea" : "UI",
                 "EventHandlerId" : "navigationfunction-76",
@@ -413,7 +421,7 @@
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-75",
                 "EventTriggerSection" : "",
-                "Id" : "725c267f-3072-476b-b52b-5c9142817007"
+                "Id" : "bdb327c6-e830-4719-bc9a-72107a998e3e"
               }, {
                 "EventHandlerArea" : "Data",
                 "EventHandlerId" : "Things_TWX.Metrices.MainPageHelper_Thing",
@@ -431,7 +439,7 @@
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-77",
                 "EventTriggerSection" : "",
-                "Id" : "7926f476-b385-435d-b4e6-225036588338"
+                "Id" : "2bcb8a4e-2f16-4b42-8706-56e1bd902d65"
               }, {
                 "EventHandlerArea" : "Data",
                 "EventHandlerId" : "Things_TWX.Metrices.MainPageHelper_Thing",
@@ -450,6 +458,15 @@
                 "EventTriggerId" : "mashup-root",
                 "EventTriggerSection" : "",
                 "Id" : "9f5aa952-7067-4e41-a545-f78d7a93e8e0"
+              }, {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_TWX.Metrices.MainPageHelper_Thing",
+                "EventHandlerService" : "GetRemoteThingsLabel",
+                "EventTriggerArea" : "Mashup",
+                "EventTriggerEvent" : "Loaded",
+                "EventTriggerId" : "mashup-root",
+                "EventTriggerSection" : "",
+                "Id" : "f5840807-30dd-4afd-8b89-f47dc5a96537"
               } ],
               "Reminders" : [ ],
               "RunTimePermissions" : {
@@ -732,6 +749,74 @@
                         },
                         "widget" : "ptcs-button"
                       },
+                      "ptcsbutton-82" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "rgba(49,121,150,1)",
+                              "border-color" : "rgba(49,121,150,1)"
+                            },
+                            "hover" : {
+                              "background" : "rgba(49,148,150,1)",
+                              "border-color" : "rgba(49,148,150,1)"
+                            },
+                            "pressed" : {
+                              "background" : "inherit",
+                              "border-color" : "inherit"
+                            }
+                          },
+                          "label" : {
+                            "$" : {
+                              "font-size" : "10px",
+                              "font-weight" : "400"
+                            },
+                            "hover" : {
+                              "font-size" : "10px",
+                              "font-weight" : "400"
+                            },
+                            "pressed" : {
+                              "font-size" : "10px",
+                              "font-weight" : "400"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-button"
+                      },
+                      "ptcschartline-79" : {
+                        "parts" : {
+                          "line" : {
+                            "serie1" : {
+                              "stroke" : "rgba(49,121,150,1)"
+                            }
+                          },
+                          "marker" : {
+                            "serie1" : {
+                              "fill" : "rgba(49,121,150,1)"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-chart-line"
+                      },
+                      "ptcschartline-80" : {
+                        "parts" : {
+                          "legend-marker" : {
+                            "serie1" : {
+                              "background" : "rgba(49,121,150,1)"
+                            }
+                          },
+                          "line" : {
+                            "serie1" : {
+                              "stroke" : "rgba(49,121,150,1)"
+                            }
+                          },
+                          "marker" : {
+                            "serie1" : {
+                              "fill" : "rgba(49,121,150,1)"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-chart-line"
+                      },
                       "ptcsdivider-51" : {
                         "parts" : {
                           "line" : {
@@ -774,7 +859,7 @@
                   "Z-index" : 10,
                   "__TypeDisplayName" : "Mashup",
                   "flex-grow" : 0,
-                  "id_index" : 81,
+                  "id_index" : 82,
                   "secureExpressionsOnly" : true,
                   "supportsAutoResize" : true
                 },
@@ -791,6 +876,7 @@
                     "LazyLoading" : false,
                     "Overlay" : false,
                     "ResponsiveLayout" : true,
+                    "Scrolling" : "auto-scroll",
                     "ShowDataLoading" : true,
                     "ShowExpandCollapseTab" : false,
                     "SourceURL" : "",
@@ -811,7 +897,7 @@
                     "flex-max-width" : "",
                     "flex-min-height" : "",
                     "flex-min-width" : "",
-                    "flex-shrink" : 0,
+                    "flex-shrink" : 1,
                     "flex-size" : "default",
                     "flex-width" : 0,
                     "flex-wrap" : "nowrap",
@@ -1398,6 +1484,7 @@
                               "LazyLoading" : false,
                               "Overlay" : false,
                               "ResponsiveLayout" : false,
+                              "Scrolling" : "auto-scroll",
                               "ShowDataLoading" : true,
                               "ShowExpandCollapseTab" : false,
                               "SourceURL" : "",
@@ -1418,7 +1505,7 @@
                               "flex-max-width" : "",
                               "flex-min-height" : "",
                               "flex-min-width" : "",
-                              "flex-shrink" : 0,
+                              "flex-shrink" : 1,
                               "flex-size" : "default",
                               "flex-width" : 0,
                               "flex-wrap" : "nowrap",
@@ -2256,6 +2343,33 @@
                               "Height" : 34,
                               "Icon" : "/Thingworx/MediaEntities/TWX.Metrices.UserIcon_ME",
                               "Id" : "ptcsbutton-77",
+                              "Label" : "-",
+                              "LabelAlignment" : "center",
+                              "LastContainer" : false,
+                              "Left" : 193.0078125,
+                              "Margin" : "0 5 0 5",
+                              "MultiLine" : false,
+                              "ResponsiveLayout" : false,
+                              "ShowDataLoading" : true,
+                              "TabSequence" : 0,
+                              "Top" : 5.01953125,
+                              "Type" : "ptcsbutton",
+                              "UseTheme" : true,
+                              "Visible" : true,
+                              "Z-index" : 10,
+                              "__TypeDisplayName" : "Button"
+                            },
+                            "Widgets" : [ ]
+                          }, {
+                            "Properties" : {
+                              "Area" : "UI",
+                              "ButtonType" : "primary",
+                              "ContextID" : "",
+                              "Disabled" : false,
+                              "DisplayName" : "ptcs-button-82",
+                              "Height" : 34,
+                              "Icon" : "/Thingworx/MediaEntities/TWX.Metrices.RemoteThingIcon_ME",
+                              "Id" : "ptcsbutton-82",
                               "Label" : "-",
                               "LabelAlignment" : "center",
                               "LastContainer" : false,

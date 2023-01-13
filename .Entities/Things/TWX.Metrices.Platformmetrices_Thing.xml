@@ -120,6 +120,22 @@
                         </ParameterDefinitions>
                     </ServiceDefinition>
                     <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetRemoteThingsMetaData">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
                      aspect.isAsync="true"
                      category=""
                      description=""
@@ -145,7 +161,7 @@
                      isPrivate="false"
                      name="Test">
                         <ResultType
-                         baseType="INFOTABLE"
+                         baseType="JSON"
                          description=""
                          name="result"
                          ordinal="0"></ResultType>
@@ -178,6 +194,44 @@
                                 <Rows>
                                     <Row>
                                         <code></code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetLicenseAndEntitiesInfo">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        // result: INFOTABLE dataShape: "EntityCount"
+                                        //let result = Subsystems["PlatformSubsystem"].GetEntityCount({
+                                        //	modelTags: undefined /* TAGS */,
+                                        //	type: undefined /* STRING */
+                                        //});
+                                        
+                                        let result = Subsystems["LicensingSubsystem"].GetCurrentLicenseInfo();
+                                        ]]>
+                                        </code>
                                     </Row>
                                 </Rows>
                             </ConfigurationTable>
@@ -252,6 +306,50 @@
                     <ServiceImplementation
                      description=""
                      handlerName="Script"
+                     name="GetRemoteThingsMetaData">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var result = { "data": [] };
+                                        (() => {
+                                            var remoteEntities = ThingTemplates["RemoteThing"].GetImplementingThings();
+                                            remoteEntities.rows.toArray().forEach((row) => {
+                                            
+                                                result.data.push({
+                                                    NAME: row.name,
+                                                    STATUS: Things[row.name].isConnected,
+                                                    LAST: new Date(Things[row.name].lastConnection),
+                                                    META: Things[row.name].GetMetadataAsJSON().propertyDefinitions
+                                                });
+                                            });
+                                        })();
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
                      name="SetCachedProperties">
                         <ConfigurationTables>
                             <ConfigurationTable
@@ -278,13 +376,13 @@
                                             // User and sessions
                                             let userAndSessions = Subsystems["UserManagementSubsystem"].GetPerformanceMetrics();
                                             userAndSessions.rows.toArray().forEach(row => {
-                                                if (row.name === "activeUsers"){
+                                                if (row.name === "activeUsers") {
                                                     currentMetrices.ACTIVE_USERS = row.value;
                                                     me.CURRENT_ACTIVE_USERS = row.value;
                                                 }
                                                 if (row.name === "activeSessions")
                                                     currentMetrices.ACTIVE_USER_SESSIONS = row.value;
-                                                if (row.name === "userCount"){
+                                                if (row.name === "userCount") {
                                                     currentMetrices.TOTAL_USER_COUNT = row.value;
                                                     me.TOTAL_USER_COUNT = row.value;
                                                 }
@@ -315,6 +413,18 @@
                                         
                                             //Finally set the metric Prop.
                                             Things['TWX.Metrices.HistoricDataHelper_Thing'].PlatformMetrices = JSON.stringify(currentMetrices);
+                                            
+                                            // All the remote Things, basically Kepware connected things
+                                            let cachedRemoteEntities = { data: [] };
+                                            var remoteEntities = ThingTemplates["RemoteThing"].GetImplementingThings();
+                                            remoteEntities.rows.toArray().forEach((row) => {
+                                                cachedRemoteEntities.data.push({
+                                                    NAME: row.name,
+                                                    STATUS: Things[row.name].isConnected,
+                                                    LAST: new Date(Things[row.name].lastConnection)
+                                                });
+                                            });
+                                             Things['TWX.Metrices.HistoricDataHelper_Thing'].RemoteThings = JSON.stringify(cachedRemoteEntities);
                                         })();
                                         ]]>
                                         </code>
@@ -347,9 +457,18 @@
                                     <Row>
                                         <code>
                                         <![CDATA[
-                                        var result;
+                                        var result = { "data": [] };
                                         (() => {
-                                           result = Subsystems["ValueStreamProcessingSubsystem"].GetPerformanceMetrics(); 
+                                            var remoteEntities = ThingTemplates["RemoteThing"].GetImplementingThings();
+                                            remoteEntities.rows.toArray().forEach((row) => {
+                                            
+                                                result.data.push({
+                                                    NAME: row.name,
+                                                    STATUS: Things[row.name].isConnected,
+                                                    LAST: new Date(Things[row.name].lastConnection),
+                                                    META: Things[row.name].GetMetadataAsJSON().propertyDefinitions
+                                                });
+                                            });
                                         })();
                                         ]]>
                                         </code>

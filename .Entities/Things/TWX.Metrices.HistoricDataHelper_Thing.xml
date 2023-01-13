@@ -36,7 +36,7 @@
                 <PropertyDefinitions>
                     <PropertyDefinition
                      aspect.cacheTime="0.0"
-                     aspect.dataChangeType="VALUE"
+                     aspect.dataChangeType="ALWAYS"
                      aspect.isLogged="true"
                      baseType="NUMBER"
                      category=""
@@ -44,16 +44,6 @@
                      isLocalOnly="false"
                      name="CPU_USE_PERCENTAGE"
                      ordinal="2"></PropertyDefinition>
-                    <PropertyDefinition
-                     aspect.cacheTime="0.0"
-                     aspect.dataChangeType="VALUE"
-                     aspect.isLogged="true"
-                     baseType="NUMBER"
-                     category=""
-                     description=""
-                     isLocalOnly="false"
-                     name="DISK_TOTAL"
-                     ordinal="8"></PropertyDefinition>
                     <PropertyDefinition
                      aspect.cacheTime="0.0"
                      aspect.dataChangeType="VALUE"
@@ -91,55 +81,12 @@
                      aspect.cacheTime="0.0"
                      aspect.dataChangeType="VALUE"
                      aspect.isLogged="true"
-                     aspect.isPersistent="false"
-                     baseType="NUMBER"
+                     baseType="STRING"
                      category=""
                      description=""
                      isLocalOnly="false"
-                     name="RAM_FREE"
-                     ordinal="5"></PropertyDefinition>
-                    <PropertyDefinition
-                     aspect.cacheTime="0.0"
-                     aspect.dataChangeType="VALUE"
-                     aspect.isLogged="true"
-                     aspect.isPersistent="false"
-                     baseType="NUMBER"
-                     category=""
-                     description=""
-                     isLocalOnly="false"
-                     name="RAM_USE_PERCENTAGE"
-                     ordinal="3"></PropertyDefinition>
-                    <PropertyDefinition
-                     aspect.cacheTime="0.0"
-                     aspect.dataChangeType="VALUE"
-                     aspect.isLogged="true"
-                     baseType="NUMBER"
-                     category=""
-                     description=""
-                     isLocalOnly="false"
-                     name="RAM_USED"
-                     ordinal="4"></PropertyDefinition>
-                    <PropertyDefinition
-                     aspect.cacheTime="0.0"
-                     aspect.dataChangeType="VALUE"
-                     aspect.isLogged="true"
-                     baseType="NUMBER"
-                     category=""
-                     description=""
-                     isLocalOnly="false"
-                     name="TOTAL_HEAP"
+                     name="RemoteThings"
                      ordinal="6"></PropertyDefinition>
-                    <PropertyDefinition
-                     aspect.cacheTime="0.0"
-                     aspect.dataChangeType="VALUE"
-                     aspect.isLogged="true"
-                     aspect.isPersistent="false"
-                     baseType="NUMBER"
-                     category=""
-                     description=""
-                     isLocalOnly="false"
-                     name="USED_HEAP"
-                     ordinal="7"></PropertyDefinition>
                 </PropertyDefinitions>
                 <ServiceDefinitions>
                     <ServiceDefinition
@@ -381,23 +328,13 @@
                 <AlertDefinitions
                  name="CPU_USE_PERCENTAGE"></AlertDefinitions>
                 <AlertDefinitions
-                 name="DISK_TOTAL"></AlertDefinitions>
-                <AlertDefinitions
                  name="DISK_USED"></AlertDefinitions>
                 <AlertDefinitions
                  name="MEMORY_METRICES_JMX"></AlertDefinitions>
                 <AlertDefinitions
                  name="PlatformMetrices"></AlertDefinitions>
                 <AlertDefinitions
-                 name="RAM_FREE"></AlertDefinitions>
-                <AlertDefinitions
-                 name="RAM_USE_PERCENTAGE"></AlertDefinitions>
-                <AlertDefinitions
-                 name="RAM_USED"></AlertDefinitions>
-                <AlertDefinitions
-                 name="TOTAL_HEAP"></AlertDefinitions>
-                <AlertDefinitions
-                 name="USED_HEAP"></AlertDefinitions>
+                 name="RemoteThings"></AlertDefinitions>
             </AlertConfigurations>
             <ImplementedShapes></ImplementedShapes>
             <ThingProperties></ThingProperties>

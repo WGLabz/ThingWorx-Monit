@@ -126,9 +126,9 @@
                      isLocalOnly="false"
                      isOpen="false"
                      isPrivate="false"
-                     name="GetRAMUsage">
+                     name="GetRemoteThingsLabel">
                         <ResultType
-                         baseType="INFOTABLE"
+                         baseType="STRING"
                          description=""
                          name="result"
                          ordinal="0"></ResultType>
@@ -356,7 +356,7 @@
                     <ServiceImplementation
                      description=""
                      handlerName="Script"
-                     name="GetRAMUsage">
+                     name="GetRemoteThingsLabel">
                         <ConfigurationTables>
                             <ConfigurationTable
                              dataShapeName=""
@@ -377,11 +377,14 @@
                                     <Row>
                                         <code>
                                         <![CDATA[
-                                        let result = Things["TWX.Metrices.HistoricData_Stream"].GetHistoricData({
-                                        	EndTime: undefined /* DATETIME */,
-                                        	StartTime: undefined /* DATETIME */,
-                                        	Metric: "RAM_USE" /* STRING */
-                                        });
+                                        var result= "";
+                                        (()=>{
+                                            let thingsCache =  JSON.parse(Things["TWX.Metrices.HistoricDataHelper_Thing"].RemoteThings || {});
+                                           
+                                            let connectedThings = thingsCache.data.filter((thing) => thing.STATUS).length;
+                                            
+                                            result = connectedThings+"/"+thingsCache.data.length + " Connected Things";
+                                        })();
                                         ]]>
                                         </code>
                                     </Row>
