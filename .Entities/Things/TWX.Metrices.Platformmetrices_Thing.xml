@@ -64,7 +64,7 @@
                      isPrivate="false"
                      name="GetIndustrialConnectionsInfo">
                         <ResultType
-                         baseType="NOTHING"
+                         baseType="INFOTABLE"
                          description=""
                          name="result"
                          ordinal="0"></ResultType>
@@ -118,22 +118,6 @@
                              name="UserName"
                              ordinal="4"></FieldDefinition>
                         </ParameterDefinitions>
-                    </ServiceDefinition>
-                    <ServiceDefinition
-                     aspect.isAsync="false"
-                     category=""
-                     description=""
-                     isAllowOverride="false"
-                     isLocalOnly="false"
-                     isOpen="false"
-                     isPrivate="false"
-                     name="GetRemoteThingsMetaData">
-                        <ResultType
-                         baseType="NOTHING"
-                         description=""
-                         name="result"
-                         ordinal="0"></ResultType>
-                        <ParameterDefinitions></ParameterDefinitions>
                     </ServiceDefinition>
                     <ServiceDefinition
                      aspect.isAsync="true"
@@ -193,43 +177,29 @@
                                 </DataShape>
                                 <Rows>
                                     <Row>
-                                        <code></code>
-                                    </Row>
-                                </Rows>
-                            </ConfigurationTable>
-                        </ConfigurationTables>
-                    </ServiceImplementation>
-                    <ServiceImplementation
-                     description=""
-                     handlerName="Script"
-                     name="GetLicenseAndEntitiesInfo">
-                        <ConfigurationTables>
-                            <ConfigurationTable
-                             dataShapeName=""
-                             description=""
-                             isMultiRow="false"
-                             name="Script"
-                             ordinal="0">
-                                <DataShape>
-                                    <FieldDefinitions>
-                                        <FieldDefinition
-                                         baseType="STRING"
-                                         description="code"
-                                         name="code"
-                                         ordinal="0"></FieldDefinition>
-                                    </FieldDefinitions>
-                                </DataShape>
-                                <Rows>
-                                    <Row>
                                         <code>
                                         <![CDATA[
-                                        // result: INFOTABLE dataShape: "EntityCount"
-                                        //let result = Subsystems["PlatformSubsystem"].GetEntityCount({
-                                        //	modelTags: undefined /* TAGS */,
-                                        //	type: undefined /* STRING */
-                                        //});
-                                        
-                                        let result = Subsystems["LicensingSubsystem"].GetCurrentLicenseInfo();
+                                        let entties  = ThingTemplates["RemoteThing"].GetImplementingThings();
+                                        let result = DataShapes["TWX.Metrices.RemoteEntityInfo_DS"].CreateValues();
+                                        entties.rows.toArray().forEach((row) =>{
+                                            let entity = Things[row.name];
+                                            let meta = entity.GetMetadata();
+                                            
+                                            let props = DataShapes["TWX.Metrices.RemoteThingProperty_DS"].CreateValues();
+                                        	meta.rows[0].propertyDefinitions.rows.toArray().forEach((row_)=>{
+                                                props.AddRow({
+                                                    name:row_.name,
+                                                    value:entity[row_.name]
+                                                });
+                                            });
+                                        	result.AddRow({
+                                            	avatar: row.avatar,
+                                              	name: row.name,
+                                                description: row.description,
+                                                properties: props,
+                                                lastconnected: entity.lastConnection,
+                                            });
+                                        });
                                         ]]>
                                         </code>
                                     </Row>
@@ -296,50 +266,6 @@
                                         };
                                         
                                         let result = Resources["InfoTableFunctions"].Union(params);
-                                        ]]>
-                                        </code>
-                                    </Row>
-                                </Rows>
-                            </ConfigurationTable>
-                        </ConfigurationTables>
-                    </ServiceImplementation>
-                    <ServiceImplementation
-                     description=""
-                     handlerName="Script"
-                     name="GetRemoteThingsMetaData">
-                        <ConfigurationTables>
-                            <ConfigurationTable
-                             dataShapeName=""
-                             description=""
-                             isMultiRow="false"
-                             name="Script"
-                             ordinal="0">
-                                <DataShape>
-                                    <FieldDefinitions>
-                                        <FieldDefinition
-                                         baseType="STRING"
-                                         description="code"
-                                         name="code"
-                                         ordinal="0"></FieldDefinition>
-                                    </FieldDefinitions>
-                                </DataShape>
-                                <Rows>
-                                    <Row>
-                                        <code>
-                                        <![CDATA[
-                                        var result = { "data": [] };
-                                        (() => {
-                                            var remoteEntities = ThingTemplates["RemoteThing"].GetImplementingThings();
-                                            remoteEntities.rows.toArray().forEach((row) => {
-                                            
-                                                result.data.push({
-                                                    NAME: row.name,
-                                                    STATUS: Things[row.name].isConnected,
-                                                    LAST: new Date(Things[row.name].lastConnection),
-                                                    META: Things[row.name].GetMetadataAsJSON().propertyDefinitions
-                                                });
-                                            });
-                                        })();
                                         ]]>
                                         </code>
                                     </Row>

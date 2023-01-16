@@ -483,10 +483,10 @@
                                     <ReadBytes>1.520682496E9</ReadBytes>
                                     <Reads>69784.0</Reads>
                                     <Size>1.073741824E11</Size>
-                                    <Timestamp>2023-01-12T17:53:20.787Z</Timestamp>
-                                    <TransferTime>9.3982316E7</TransferTime>
-                                    <WriteBytes>9.41145595904E11</WriteBytes>
-                                    <Writes>1.44374305E8</Writes>
+                                    <Timestamp>2023-01-15T05:27:08.262Z</Timestamp>
+                                    <TransferTime>9.45318E7</TransferTime>
+                                    <WriteBytes>9.46113851392E11</WriteBytes>
+                                    <Writes>1.45085969E8</Writes>
                                     <partitions>
                                         <infoTable>
                                             <DataShape>
@@ -800,7 +800,7 @@
                                     <ReadBytes>2.3977984E7</ReadBytes>
                                     <Reads>3832.0</Reads>
                                     <Size>4.294967296E11</Size>
-                                    <Timestamp>2023-01-12T17:53:20.794Z</Timestamp>
+                                    <Timestamp>2023-01-15T05:27:08.270Z</Timestamp>
                                     <TransferTime>44332.0</TransferTime>
                                     <WriteBytes>73728.0</WriteBytes>
                                     <Writes>14.0</Writes>
@@ -901,7 +901,7 @@
                                     <ReadBytes>0.0</ReadBytes>
                                     <Reads>0.0</Reads>
                                     <Size>1.073741312E9</Size>
-                                    <Timestamp>2023-01-12T17:53:20.796Z</Timestamp>
+                                    <Timestamp>2023-01-15T05:27:08.271Z</Timestamp>
                                     <TransferTime>0.0</TransferTime>
                                     <WriteBytes>0.0</WriteBytes>
                                     <Writes>0.0</Writes>
@@ -960,7 +960,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2023-01-12T17:53:20.802Z</Timestamp>
+                    <Timestamp>2023-01-15T05:27:08.277Z</Timestamp>
                     <Quality>GOOD</Quality>
                 </DiskInfo>
             </ThingProperties>

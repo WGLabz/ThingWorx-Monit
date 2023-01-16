@@ -1250,7 +1250,7 @@
                         "MashupGlobalPropertyBinding" : "{}",
                         "MashupHeight" : 140,
                         "MashupPropertyBinding" : "{\"Name\":\"ParitionName\",\"Size\":\"PartitionSize\",\"MountPoint\":\"Mount\",\"Type\":\"Type_\",\"UsedSpace\":\"UsedSpace\"}",
-                        "MashupWidth" : 80,
+                        "MashupWidth" : 120,
                         "MinimumSpacing" : 0,
                         "MultiSelect" : false,
                         "OffScreenBufferFactor" : 0.1,

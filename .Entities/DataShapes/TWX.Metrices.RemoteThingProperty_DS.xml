@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="3"
+ universal="">
+    <DataShapes>
+        <DataShape
+         baseDataShape=""
+         description="Generic Result Shape"
+         documentationContent=""
+         homeMashup=""
+         name="TWX.Metrices.RemoteThingProperty_DS"
+         projectName="TempTWXMetrices"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <FieldDefinitions>
+                <FieldDefinition
+                 aspect.isPrimaryKey="false"
+                 baseType="STRING"
+                 description=""
+                 name="name"
+                 ordinal="1"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="false"
+                 baseType="STRING"
+                 description=""
+                 name="value"
+                 ordinal="2"></FieldDefinition>
+            </FieldDefinitions>
+        </DataShape>
+    </DataShapes>
+</Entities>

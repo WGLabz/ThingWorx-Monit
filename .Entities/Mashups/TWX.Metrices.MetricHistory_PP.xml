@@ -12,7 +12,7 @@
          description=""
          documentationContent=""
          homeMashup=""
-         name="TWX.Metrices.UserStats_PP"
+         name="TWX.Metrices.MetricHistory_PP"
          projectName="TempTWXMetrices"
          rows="0.0"
          tags="">
@@ -152,7 +152,15 @@
                     </Rows>
                 </ConfigurationTable>
             </ConfigurationTables>
-            <ParameterDefinitions></ParameterDefinitions>
+            <ParameterDefinitions>
+                <FieldDefinition
+                 aspect.bindingDirection="BOTH"
+                 aspect.isMandatory="false"
+                 baseType="STRING"
+                 description=""
+                 name="Metric"
+                 ordinal="0"></FieldDefinition>
+            </ParameterDefinitions>
             <Things></Things>
             <ThingShapes></ThingShapes>
             <ThingTemplates></ThingTemplates>
@@ -176,20 +184,22 @@
                     "Target" : "GetGlobalSessionValues"
                   } ]
                 },
-                "Things_TWX.Metrices.UserStatsHelper_Thing" : {
-                  "DataName" : "Things_TWX.Metrices.UserStatsHelper_Thing",
-                  "EntityName" : "TWX.Metrices.UserStatsHelper_Thing",
+                "Things_TWX.Metrices.MetricHistoryHelper_Thing" : {
+                  "DataName" : "Things_TWX.Metrices.MetricHistoryHelper_Thing",
+                  "EntityName" : "TWX.Metrices.MetricHistoryHelper_Thing",
                   "EntityType" : "Things",
-                  "Id" : "bd71456f-5f91-41a1-bbf9-5892f153b5af",
+                  "Id" : "9980c4cf-ec54-44d4-8452-6d25aa21898a",
                   "RefreshInterval" : 0,
                   "Services" : [ {
                     "APIMethod" : "post",
                     "Characteristic" : "Services",
-                    "Id" : "af8a4d1f-4f5e-4d85-9c38-022f5609c77d",
-                    "Name" : "GetActiveUserAndSessionHistory",
-                    "Parameters" : { },
+                    "Id" : "7910c2b1-9402-4a0c-be84-cb509314995a",
+                    "Name" : "GetMetricHistory",
+                    "Parameters" : {
+                      "Metric" : "CPU"
+                    },
                     "RefreshInterval" : 0,
-                    "Target" : "GetActiveUserAndSessionHistory"
+                    "Target" : "GetMetricHistory"
                   } ]
                 },
                 "UserExtensions" : {
@@ -209,7 +219,23 @@
                 }
               },
               "DataBindings" : [ {
-                "Id" : "f370cc78-9697-4003-a37d-c167a1170200",
+                "Id" : "8d50b3ca-c00a-4d74-9960-896160a1ef15",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "State",
+                  "SourcePropertyBaseType" : "BOOLEAN",
+                  "SourcePropertyType" : "property",
+                  "TargetProperty" : "AutoRefresh",
+                  "TargetPropertyBaseType" : "BOOLEAN",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "ptcstogglebutton-19",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "autorefreshfunction-20",
+                "TargetSection" : ""
+              }, {
+                "Id" : "15a0eae9-e514-475e-b37a-186fc1d836f4",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "",
                   "SourcePropertyBaseType" : "INFOTABLE",
@@ -220,30 +246,30 @@
                 } ],
                 "SourceArea" : "Data",
                 "SourceDetails" : "AllData",
-                "SourceId" : "GetActiveUserAndSessionHistory",
-                "SourceName" : "GetActiveUserAndSessionHistory",
-                "SourceSection" : "Things_TWX.Metrices.UserStatsHelper_Thing",
+                "SourceId" : "GetMetricHistory",
+                "SourceName" : "GetMetricHistory",
+                "SourceSection" : "Things_TWX.Metrices.MetricHistoryHelper_Thing",
                 "TargetArea" : "UI",
                 "TargetId" : "ptcschartline-43",
                 "TargetSection" : ""
               }, {
-                "Id" : "f5f61bec-3eaf-4e30-82fa-685c67c84c5c",
+                "Id" : "52784365-523a-444e-ad98-2d237884e751",
                 "PropertyMaps" : [ {
-                  "SourceProperty" : "DateTime",
-                  "SourcePropertyBaseType" : "DATETIME",
+                  "SourceProperty" : "Metric",
+                  "SourcePropertyBaseType" : "STRING",
                   "SourcePropertyType" : "property",
-                  "TargetProperty" : "StartDate",
-                  "TargetPropertyBaseType" : "DATETIME",
+                  "TargetProperty" : "Metric",
+                  "TargetPropertyBaseType" : "STRING",
                   "TargetPropertyType" : "Parameter"
                 } ],
-                "SourceArea" : "UI",
-                "SourceId" : "ptcsdatepicker-40",
+                "SourceArea" : "Mashup",
+                "SourceId" : "mashup-root",
                 "SourceSection" : "",
                 "TargetArea" : "Data",
-                "TargetId" : "GetActiveUserAndSessionHistory",
-                "TargetSection" : "Things_TWX.Metrices.UserStatsHelper_Thing"
+                "TargetId" : "GetMetricHistory",
+                "TargetSection" : "Things_TWX.Metrices.MetricHistoryHelper_Thing"
               }, {
-                "Id" : "271885bc-3bf1-4512-9d2d-721fb076ab49",
+                "Id" : "54fec533-78e6-4b1a-86a3-0f0bbe09d821",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "DateTime",
                   "SourcePropertyBaseType" : "DATETIME",
@@ -256,8 +282,56 @@
                 "SourceId" : "ptcsdatepicker-41",
                 "SourceSection" : "",
                 "TargetArea" : "Data",
-                "TargetId" : "GetActiveUserAndSessionHistory",
-                "TargetSection" : "Things_TWX.Metrices.UserStatsHelper_Thing"
+                "TargetId" : "GetMetricHistory",
+                "TargetSection" : "Things_TWX.Metrices.MetricHistoryHelper_Thing"
+              }, {
+                "Id" : "82a441d1-6458-4095-8287-28e7b7d6040f",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "DateTime",
+                  "SourcePropertyBaseType" : "DATETIME",
+                  "SourcePropertyType" : "property",
+                  "TargetProperty" : "StartDate",
+                  "TargetPropertyBaseType" : "DATETIME",
+                  "TargetPropertyType" : "Parameter"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "ptcsdatepicker-40",
+                "SourceSection" : "",
+                "TargetArea" : "Data",
+                "TargetId" : "GetMetricHistory",
+                "TargetSection" : "Things_TWX.Metrices.MetricHistoryHelper_Thing"
+              }, {
+                "Id" : "c8402398-5cf1-465b-82dd-148693d5faba",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Output",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "LabelText",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "expression2-44",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcslabel-22",
+                "TargetSection" : ""
+              }, {
+                "Id" : "13290527-fddb-46b1-b302-0d645c45ecb7",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Metric",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "property",
+                  "TargetProperty" : "Metric",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Mashup",
+                "SourceId" : "mashup-root",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "expression2-44",
+                "TargetSection" : ""
               } ],
               "DesignTimePermissions" : { },
               "Events" : [ {
@@ -268,25 +342,34 @@
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-36",
                 "EventTriggerSection" : "",
-                "Id" : "c123988e-9501-4707-b337-05136cdb9c77"
+                "Id" : "3ec12a7c-2875-4608-b462-9b5214818ed4"
               }, {
                 "EventHandlerArea" : "Data",
-                "EventHandlerId" : "Things_TWX.Metrices.UserStatsHelper_Thing",
-                "EventHandlerService" : "GetActiveUserAndSessionHistory",
+                "EventHandlerId" : "Things_TWX.Metrices.MetricHistoryHelper_Thing",
+                "EventHandlerService" : "GetMetricHistory",
                 "EventTriggerArea" : "Mashup",
                 "EventTriggerEvent" : "Loaded",
                 "EventTriggerId" : "mashup-root",
                 "EventTriggerSection" : "",
-                "Id" : "a0361963-c5cb-40a0-a96b-6f630dee791f"
+                "Id" : "8c211367-0ac0-40c4-9757-7e3600c8b4a7"
               }, {
                 "EventHandlerArea" : "Data",
-                "EventHandlerId" : "Things_TWX.Metrices.UserStatsHelper_Thing",
-                "EventHandlerService" : "GetActiveUserAndSessionHistory",
+                "EventHandlerId" : "Things_TWX.Metrices.MetricHistoryHelper_Thing",
+                "EventHandlerService" : "GetMetricHistory",
                 "EventTriggerArea" : "UI",
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-32",
                 "EventTriggerSection" : "",
-                "Id" : "a0d2ac99-40da-41ef-b0dc-e227746f50c9"
+                "Id" : "61addc4c-b48b-48fc-98d0-b0d103706dd1"
+              }, {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_TWX.Metrices.MetricHistoryHelper_Thing",
+                "EventHandlerService" : "GetMetricHistory",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "Refresh",
+                "EventTriggerId" : "autorefreshfunction-20",
+                "EventTriggerSection" : "",
+                "Id" : "6f5e4906-da96-43cd-b33e-2dd085d43b0f"
               } ],
               "Reminders" : [ ],
               "RunTimePermissions" : { },
@@ -309,6 +392,7 @@
                   "IsPrintLayout" : false,
                   "Left" : 0,
                   "MashupToEditGadget" : "DefaultMashupToEditGadget",
+                  "Metric" : "CPU",
                   "MinHeight" : 0,
                   "MinWidth" : 0,
                   "ResponsiveLayout" : true,
@@ -327,6 +411,16 @@
                         },
                         "widget" : "flex-container"
                       },
+                      "ptcsbutton-32" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "min-height" : "25px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-button"
+                      },
                       "ptcsbutton-36" : {
                         "parts" : {
                           "$" : {
@@ -338,6 +432,46 @@
                           }
                         },
                         "widget" : "ptcs-button"
+                      },
+                      "ptcschartline-43" : {
+                        "parts" : {
+                          "legend-marker" : {
+                            "serie1" : {
+                              "background" : "rgba(49,121,150,1)"
+                            }
+                          },
+                          "line" : {
+                            "serie1" : {
+                              "stroke" : "rgba(49,121,150,1)"
+                            }
+                          },
+                          "marker" : {
+                            "serie1" : {
+                              "fill" : "rgba(49,121,150,1)"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-chart-line"
+                      },
+                      "ptcsdatepicker-40" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "min-height" : "25px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-datepicker"
+                      },
+                      "ptcsdatepicker-41" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "min-height" : "25px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-datepicker"
                       },
                       "ptcslabel-22" : {
                         "parts" : {
@@ -369,7 +503,16 @@
                   "Width" : 1024,
                   "Z-index" : 10,
                   "__TypeDisplayName" : "Mashup",
-                  "id_index" : 43,
+                  "_currentParameterDefs" : [ {
+                    "Aspects" : {
+                      "bindingDirection" : "BOTH",
+                      "isMandatory" : false
+                    },
+                    "BaseType" : "STRING",
+                    "Description" : "",
+                    "ParameterName" : "Metric"
+                  } ],
+                  "id_index" : 44,
                   "secureExpressionsOnly" : true,
                   "supportsAutoResize" : true
                 },
@@ -588,7 +731,7 @@
                           "DisplayName" : "ptcs-label-22",
                           "HorizontalAlignment" : "left",
                           "Id" : "ptcslabel-22",
-                          "LabelText" : "Active Users/Sessions",
+                          "LabelText" : "-",
                           "LabelType" : "label",
                           "LastContainer" : false,
                           "Left" : 229.00390625,
@@ -894,50 +1037,31 @@
                           "positioning" : "responsive",
                           "userCannotRemove" : false
                         },
-                        "Widgets" : [ ]
+                        "Widgets" : [ {
+                          "Properties" : {
+                            "Area" : "UI",
+                            "Disabled" : false,
+                            "DisplayName" : "ptcs-togglebutton-19",
+                            "Id" : "ptcstogglebutton-19",
+                            "Label" : "Auto Refresh",
+                            "LabelAlignment" : "left",
+                            "LastContainer" : false,
+                            "Left" : 229.00390625,
+                            "Margin" : "5",
+                            "ResponsiveLayout" : false,
+                            "ShowDataLoading" : true,
+                            "State" : false,
+                            "TabSequence" : 0,
+                            "Top" : 5.01953125,
+                            "Type" : "ptcstogglebutton",
+                            "UseTheme" : true,
+                            "Visible" : true,
+                            "Z-index" : 10,
+                            "__TypeDisplayName" : "Toggle Button"
+                          },
+                          "Widgets" : [ ]
+                        } ]
                       } ]
-                    }, {
-                      "Properties" : {
-                        "Area" : "UI",
-                        "DisplayName" : "container-15",
-                        "EnableContainerUnload" : false,
-                        "EnableExpandCollapse" : false,
-                        "ExpandCollapseTabLocation" : "inside",
-                        "Expanded" : true,
-                        "Id" : "flexcontainer-15",
-                        "LastContainer" : false,
-                        "LazyLoading" : false,
-                        "Overlay" : false,
-                        "ResponsiveLayout" : true,
-                        "ShowDataLoading" : true,
-                        "ShowExpandCollapseTab" : false,
-                        "SourceURL" : "",
-                        "Style" : "DefaultContainerStyle",
-                        "StyleProperties" : { },
-                        "Type" : "flexcontainer",
-                        "UseTheme" : true,
-                        "Visible" : true,
-                        "Z-index" : 10,
-                        "__TypeDisplayName" : "Responsive Container",
-                        "align-content" : "flex-start",
-                        "align-items" : "flex-start",
-                        "flex-basis" : "auto",
-                        "flex-direction" : "row",
-                        "flex-grow" : 1,
-                        "flex-max-height" : "16px",
-                        "flex-max-width" : "",
-                        "flex-min-height" : "16px",
-                        "flex-min-width" : "",
-                        "flex-shrink" : 1,
-                        "flex-size" : "fixed",
-                        "flex-wrap" : "nowrap",
-                        "iconClass" : "widgets-flexcontainer-fixed",
-                        "isLocked" : false,
-                        "justify-content" : "flex-start",
-                        "positioning" : "responsive",
-                        "userCannotRemove" : false
-                      },
-                      "Widgets" : [ ]
                     }, {
                       "Properties" : {
                         "Area" : "UI",
@@ -984,7 +1108,7 @@
                         "Properties" : {
                           "Area" : "UI",
                           "ChartType" : "runchart",
-                          "CurveFitting" : "monotone-x",
+                          "CurveFitting" : "natural",
                           "DataLabel1" : "",
                           "DataLabel10" : "",
                           "DataLabel11" : "",
@@ -1041,7 +1165,7 @@
                           "DisplayName" : "ptcs-chartline-43",
                           "DragSelectionZoom" : "none",
                           "Height" : 476,
-                          "HideLegend" : false,
+                          "HideLegend" : true,
                           "HideLines" : false,
                           "HideMarkers" : true,
                           "HideNotes" : false,
@@ -1061,18 +1185,18 @@
                           "HorizontalStartZoomLabel" : "",
                           "HorizontalZoom" : false,
                           "Id" : "ptcschartline-43",
-                          "Label" : null,
+                          "Label" : "",
                           "LabelAlignment" : "left",
                           "LabelPosition" : "top",
                           "LabelReset" : "Reset",
                           "LabelType" : "sub-header",
                           "LastContainer" : false,
-                          "Left" : 192.01171875,
-                          "LegendAlignment" : "center",
-                          "LegendFilter" : false,
-                          "LegendMarkerShapes" : "square",
-                          "LegendMaxWidth" : 736,
-                          "LegendPosition" : "bottom",
+                          "Left" : 26.015625,
+                          "LegendAlignment" : "start",
+                          "LegendFilter" : true,
+                          "LegendMarkerShapes" : "circle",
+                          "LegendMaxWidth" : 300,
+                          "LegendPosition" : "right",
                           "MarkerShape" : "circle",
                           "MarkerSize" : 8,
                           "MultipleDataSources" : false,
@@ -1080,6 +1204,7 @@
                           "NotesAlignment" : "left",
                           "NotesPosition" : "bottom",
                           "NumberOfReferenceLines" : 0,
+                          "NumberOfYLabels" : 5,
                           "PointerType" : "auto",
                           "ReferenceLine10Axis" : "xaxis",
                           "ReferenceLine10Value" : "",
@@ -1135,22 +1260,22 @@
                           "ReverseYAxis" : false,
                           "RulersInFront" : false,
                           "SecondYAxis" : false,
-                          "SecondYAxisFormat" : "0000.0",
-                          "SecondYAxisLabel" : "[[SecondYAxis]]",
+                          "SecondYAxisFormat" : "0000.00 GB",
+                          "SecondYAxisLabel" : null,
                           "SecondYAxisLabelAlignment" : "center",
                           "SecondYAxisType" : "number",
-                          "SelectionMode" : "none",
+                          "SelectionMode" : "single",
                           "SeriesStacking" : "none",
                           "ShowArea" : false,
                           "ShowDataLoading" : true,
                           "ShowHideLegend" : false,
                           "ShowHorizontalAnchorPointControl" : false,
-                          "ShowXAxisRuler" : false,
-                          "ShowYAxisRuler" : false,
-                          "ShowZeroValueRuler" : true,
+                          "ShowXAxisRuler" : true,
+                          "ShowYAxisRuler" : true,
+                          "ShowZeroValueRuler" : false,
                           "SparkView" : false,
-                          "StackOrder" : "insideout",
-                          "StepPosition" : "after",
+                          "StackOrder" : "auto",
+                          "StepPosition" : "center",
                           "StringClearAll" : "[[clearAll]]",
                           "StringEnd" : "[[endRange]]",
                           "StringHideLegend" : "[[hideLegend]]",
@@ -1158,7 +1283,7 @@
                           "StringShowLegend" : "[[showLegend]]",
                           "StringStart" : "[[startRange]]",
                           "TabSequence" : 0,
-                          "Top" : 90.01953125,
+                          "Top" : 115.01953125,
                           "Type" : "ptcschartline",
                           "UseSampleDataInRuntime" : false,
                           "UseSecondYAxis1" : false,
@@ -1201,10 +1326,10 @@
                           "XAxisLabel" : null,
                           "XAxisLabelAlignment" : "start",
                           "XAxisMaximumValues" : "",
-                          "XAxisMinimumValues" : "auto",
+                          "XAxisMinimumValues" : "",
                           "XAxisType" : "date",
                           "YAxisDateFormatToken" : "",
-                          "YAxisFormat" : "0000.0",
+                          "YAxisFormat" : "0000.00 %",
                           "YAxisLabel" : null,
                           "YAxisLabelAlignment" : "center",
                           "YAxisMinimumValues" : 0,
@@ -1329,6 +1454,58 @@
                       "Widgets" : [ ]
                     } ]
                   } ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "AutoRefresh" : true,
+                    "DisplayName" : "RefreshLogs",
+                    "Id" : "autorefreshfunction-20",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "RefreshInterval" : "5",
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "Top" : null,
+                    "Type" : "autorefreshfunction",
+                    "Visible" : true,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "autorefreshfunction"
+                  },
+                  "Widgets" : [ ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "AutoEvaluate" : true,
+                    "DataChangeType" : "VALUE",
+                    "DisableInitialOutput" : false,
+                    "DisplayName" : "Title",
+                    "Expression" : "result = Metric+\" Stats\";",
+                    "FireOnFirstValue" : false,
+                    "Height" : 28,
+                    "Id" : "expression2-44",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "OutputBaseType" : "STRING",
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "Top" : null,
+                    "Type" : "expression2",
+                    "Visible" : true,
+                    "Width" : 200,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Expression",
+                    "_currentParameterDefs" : [ {
+                      "BaseType" : "STRING",
+                      "Description" : "",
+                      "ParameterName" : "Metric",
+                      "bindingDirection" : "Target",
+                      "bindingType" : "Property",
+                      "isBindingSource" : false,
+                      "isBindingTarget" : true,
+                      "shown" : true
+                    } ]
+                  },
+                  "Widgets" : [ ]
                 } ]
               },
               "mashupType" : "mashup"

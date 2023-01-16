@@ -249,7 +249,7 @@
                 }
               },
               "DataBindings" : [ {
-                "Id" : "1879cc2d-97ef-401b-b956-5dee6ad2cfa3",
+                "Id" : "e2c868d6-2567-4bc7-8da1-7fe7bba99465",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -266,7 +266,7 @@
                 "TargetId" : "ptcsbutton-36",
                 "TargetSection" : ""
               }, {
-                "Id" : "2f7d2355-8975-42af-ab26-1079e5333493",
+                "Id" : "5c871686-8ed6-4f81-8b67-f0816dddf37b",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -283,7 +283,7 @@
                 "TargetId" : "ptcsbutton-37",
                 "TargetSection" : ""
               }, {
-                "Id" : "ac0cea83-c083-4298-b611-cb41ea3c019f",
+                "Id" : "c7b0ffc0-395d-4776-8780-6f562917ace2",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -300,7 +300,7 @@
                 "TargetId" : "ptcsbutton-38",
                 "TargetSection" : ""
               }, {
-                "Id" : "97466b16-52b4-4406-b34b-8d33c4287c13",
+                "Id" : "7d38f1e4-10aa-4680-8ce6-8d552e7c3b04",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -353,7 +353,7 @@
                 "TargetId" : "ptcschartline-80",
                 "TargetSection" : ""
               }, {
-                "Id" : "f46ffb04-81c1-4eaf-a69a-2ceabb22284e",
+                "Id" : "b1f9b9a8-b0a5-46e6-975d-8ab0fabec19f",
                 "PropertyMaps" : [ {
                   "SourceProperty" : "result",
                   "SourcePropertyBaseType" : "STRING",
@@ -412,7 +412,7 @@
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-38",
                 "EventTriggerSection" : "",
-                "Id" : "47f85b46-2df4-4c4b-8402-d7d385f37bf5"
+                "Id" : "7fdd1b37-82b9-412c-b2e0-7702b095bfb7"
               }, {
                 "EventHandlerArea" : "UI",
                 "EventHandlerId" : "navigationfunction-76",
@@ -421,7 +421,7 @@
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-75",
                 "EventTriggerSection" : "",
-                "Id" : "bdb327c6-e830-4719-bc9a-72107a998e3e"
+                "Id" : "76adf912-43ba-4455-a68b-cfdc15f2348a"
               }, {
                 "EventHandlerArea" : "Data",
                 "EventHandlerId" : "Things_TWX.Metrices.MainPageHelper_Thing",
@@ -439,7 +439,7 @@
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-77",
                 "EventTriggerSection" : "",
-                "Id" : "2bcb8a4e-2f16-4b42-8706-56e1bd902d65"
+                "Id" : "b8c688a3-d521-4d05-a278-2e697aac2eba"
               }, {
                 "EventHandlerArea" : "Data",
                 "EventHandlerId" : "Things_TWX.Metrices.MainPageHelper_Thing",
@@ -467,6 +467,33 @@
                 "EventTriggerId" : "mashup-root",
                 "EventTriggerSection" : "",
                 "Id" : "f5840807-30dd-4afd-8b89-f47dc5a96537"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "navigationfunction-95",
+                "EventHandlerService" : "Navigate",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "Clicked",
+                "EventTriggerId" : "ptcsbutton-94",
+                "EventTriggerSection" : "",
+                "Id" : "f6c39af2-26cc-403a-b1e2-e9f45fed5d20"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "navigationfunction-96",
+                "EventHandlerService" : "Navigate",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "Clicked",
+                "EventTriggerId" : "ptcsbutton-97",
+                "EventTriggerSection" : "",
+                "Id" : "c9c52e40-405a-4ff7-8118-941a1337e0a5"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "navigationfunction-98",
+                "EventHandlerService" : "Navigate",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "Clicked",
+                "EventTriggerId" : "ptcsbutton-82",
+                "EventTriggerSection" : "",
+                "Id" : "7375b219-d380-4776-b875-66b542947055"
               } ],
               "Reminders" : [ ],
               "RunTimePermissions" : {
@@ -782,6 +809,26 @@
                         },
                         "widget" : "ptcs-button"
                       },
+                      "ptcsbutton-94" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "min-height" : "20px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-button"
+                      },
+                      "ptcsbutton-97" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "min-height" : "20px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-button"
+                      },
                       "ptcschartline-79" : {
                         "parts" : {
                           "line" : {
@@ -859,7 +906,7 @@
                   "Z-index" : 10,
                   "__TypeDisplayName" : "Mashup",
                   "flex-grow" : 0,
-                  "id_index" : 82,
+                  "id_index" : 98,
                   "secureExpressionsOnly" : true,
                   "supportsAutoResize" : true
                 },
@@ -902,6 +949,7 @@
                     "flex-width" : 0,
                     "flex-wrap" : "nowrap",
                     "iconClass" : "widgets-flexcontainer",
+                    "isLocked" : false,
                     "justify-content" : "flex-start",
                     "positioning" : "responsive",
                     "userCannotRemove" : true
@@ -979,6 +1027,48 @@
                       },
                       "Widgets" : [ ]
                     } ]
+                  }, {
+                    "Properties" : {
+                      "Area" : "UI",
+                      "DisplayName" : "container-91",
+                      "EnableContainerUnload" : false,
+                      "EnableExpandCollapse" : false,
+                      "ExpandCollapseTabLocation" : "inside",
+                      "Expanded" : true,
+                      "Id" : "flexcontainer-91",
+                      "LastContainer" : false,
+                      "LazyLoading" : false,
+                      "Overlay" : false,
+                      "ResponsiveLayout" : true,
+                      "ShowDataLoading" : true,
+                      "ShowExpandCollapseTab" : false,
+                      "SourceURL" : "",
+                      "Style" : "DefaultContainerStyle",
+                      "StyleProperties" : { },
+                      "Type" : "flexcontainer",
+                      "UseTheme" : true,
+                      "Visible" : true,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "Responsive Container",
+                      "align-content" : "flex-start",
+                      "align-items" : "flex-start",
+                      "flex-basis" : "auto",
+                      "flex-direction" : "row",
+                      "flex-grow" : 1,
+                      "flex-max-height" : "16px",
+                      "flex-max-width" : "",
+                      "flex-min-height" : "16px",
+                      "flex-min-width" : "",
+                      "flex-shrink" : 1,
+                      "flex-size" : "fixed",
+                      "flex-wrap" : "nowrap",
+                      "iconClass" : "widgets-flexcontainer-fixed",
+                      "isLocked" : false,
+                      "justify-content" : "flex-start",
+                      "positioning" : "responsive",
+                      "userCannotRemove" : false
+                    },
+                    "Widgets" : [ ]
                   }, {
                     "Properties" : {
                       "Area" : "UI",
@@ -1164,6 +1254,7 @@
                             "LazyLoading" : false,
                             "Overlay" : false,
                             "ResponsiveLayout" : false,
+                            "Scrolling" : "auto-scroll",
                             "ShowDataLoading" : true,
                             "ShowExpandCollapseTab" : false,
                             "SourceURL" : "",
@@ -1184,7 +1275,7 @@
                             "flex-max-width" : "",
                             "flex-min-height" : "",
                             "flex-min-width" : "",
-                            "flex-shrink" : 0,
+                            "flex-shrink" : 1,
                             "flex-size" : "default",
                             "flex-width" : 0,
                             "flex-wrap" : "nowrap",
@@ -1195,6 +1286,102 @@
                             "userCannotRemove" : false
                           },
                           "Widgets" : [ {
+                            "Properties" : {
+                              "Area" : "UI",
+                              "DisplayName" : "container-84",
+                              "EnableContainerUnload" : false,
+                              "EnableExpandCollapse" : false,
+                              "ExpandCollapseTabLocation" : "inside",
+                              "Expanded" : true,
+                              "Id" : "flexcontainer-84",
+                              "LastContainer" : false,
+                              "LazyLoading" : false,
+                              "Overlay" : false,
+                              "ResponsiveLayout" : true,
+                              "ShowDataLoading" : true,
+                              "ShowExpandCollapseTab" : false,
+                              "SourceURL" : "",
+                              "Style" : "DefaultContainerStyle",
+                              "StyleProperties" : { },
+                              "Type" : "flexcontainer",
+                              "UseTheme" : true,
+                              "Visible" : true,
+                              "Z-index" : 10,
+                              "__TypeDisplayName" : "Responsive Container",
+                              "align-content" : "flex-start",
+                              "align-items" : "flex-start",
+                              "flex-basis" : "auto",
+                              "flex-direction" : "row",
+                              "flex-grow" : 1,
+                              "flex-max-height" : "30px",
+                              "flex-max-width" : "",
+                              "flex-min-height" : "30px",
+                              "flex-min-width" : "",
+                              "flex-shrink" : 1,
+                              "flex-size" : "fixed",
+                              "flex-wrap" : "nowrap",
+                              "iconClass" : "widgets-flexcontainer-fixed",
+                              "isLocked" : false,
+                              "justify-content" : "flex-start",
+                              "positioning" : "responsive",
+                              "userCannotRemove" : false
+                            },
+                            "Widgets" : [ {
+                              "Properties" : {
+                                "Area" : "UI",
+                                "DisclosureControl" : "show-more",
+                                "DisplayName" : "ptcs-label-86",
+                                "HorizontalAlignment" : "left",
+                                "Id" : "ptcslabel-86",
+                                "LabelText" : "Memory Usage",
+                                "LabelType" : "header",
+                                "LastContainer" : false,
+                                "Left" : 47.01171875,
+                                "Margin" : "0",
+                                "MultiLine" : true,
+                                "PreserveWhiteSpace" : false,
+                                "ResponsiveLayout" : false,
+                                "ShowDataLoading" : true,
+                                "Top" : 10.01953125,
+                                "Type" : "ptcslabel",
+                                "UseTheme" : true,
+                                "VerticalAlignment" : "flex-start",
+                                "Visible" : true,
+                                "Z-index" : 10,
+                                "__TypeDisplayName" : "Label",
+                                "overflowShowLessTxt" : "[[showLess]]",
+                                "overflowShowMoreTxt" : "[[showMore]]"
+                              },
+                              "Widgets" : [ ]
+                            }, {
+                              "Properties" : {
+                                "Area" : "UI",
+                                "ButtonType" : "transparent",
+                                "ContextID" : "",
+                                "Disabled" : false,
+                                "DisplayName" : "ptcs-button-94",
+                                "Height" : 20,
+                                "Icon" : "/Thingworx/MediaEntities/TWX.Metrices.PopupIcon_ME",
+                                "Id" : "ptcsbutton-94",
+                                "Label" : null,
+                                "LabelAlignment" : "center",
+                                "LastContainer" : false,
+                                "Left" : 212.01171875,
+                                "Margin" : "5",
+                                "MultiLine" : false,
+                                "ResponsiveLayout" : false,
+                                "ShowDataLoading" : true,
+                                "TabSequence" : 0,
+                                "Top" : 10.01953125,
+                                "Type" : "ptcsbutton",
+                                "UseTheme" : true,
+                                "Visible" : true,
+                                "Z-index" : 10,
+                                "__TypeDisplayName" : "Button"
+                              },
+                              "Widgets" : [ ]
+                            } ]
+                          }, {
                             "Properties" : {
                               "Area" : "UI",
                               "DisplayName" : "container-56",
@@ -1317,7 +1504,7 @@
                                 "HorizontalStartZoomLabel" : "",
                                 "HorizontalZoom" : false,
                                 "Id" : "ptcschartline-79",
-                                "Label" : "RAM Usage",
+                                "Label" : "",
                                 "LabelAlignment" : "left",
                                 "LabelPosition" : "top",
                                 "LabelReset" : "Reset",
@@ -1402,8 +1589,8 @@
                                 "ShowDataLoading" : true,
                                 "ShowHideLegend" : false,
                                 "ShowHorizontalAnchorPointControl" : false,
-                                "ShowXAxisRuler" : false,
-                                "ShowYAxisRuler" : false,
+                                "ShowXAxisRuler" : true,
+                                "ShowYAxisRuler" : true,
                                 "ShowZeroValueRuler" : false,
                                 "SparkView" : false,
                                 "StackOrder" : "auto",
@@ -1464,10 +1651,107 @@
                                 "YAxisFormat" : "0000.00 GB",
                                 "YAxisLabel" : null,
                                 "YAxisLabelAlignment" : "center",
+                                "YAxisMinimumValues" : 0,
                                 "YAxisRulerAlignment" : "primary",
                                 "YAxisType" : "number",
                                 "Z-index" : 10,
                                 "__TypeDisplayName" : "Line Chart"
+                              },
+                              "Widgets" : [ ]
+                            } ]
+                          }, {
+                            "Properties" : {
+                              "Area" : "UI",
+                              "DisplayName" : "container-85",
+                              "EnableContainerUnload" : false,
+                              "EnableExpandCollapse" : false,
+                              "ExpandCollapseTabLocation" : "inside",
+                              "Expanded" : true,
+                              "Id" : "flexcontainer-85",
+                              "LastContainer" : false,
+                              "LazyLoading" : false,
+                              "Overlay" : false,
+                              "ResponsiveLayout" : true,
+                              "ShowDataLoading" : true,
+                              "ShowExpandCollapseTab" : false,
+                              "SourceURL" : "",
+                              "Style" : "DefaultContainerStyle",
+                              "StyleProperties" : { },
+                              "Type" : "flexcontainer",
+                              "UseTheme" : true,
+                              "Visible" : true,
+                              "Z-index" : 10,
+                              "__TypeDisplayName" : "Responsive Container",
+                              "align-content" : "flex-start",
+                              "align-items" : "flex-start",
+                              "flex-basis" : "auto",
+                              "flex-direction" : "row",
+                              "flex-grow" : 1,
+                              "flex-max-height" : "30px",
+                              "flex-max-width" : "",
+                              "flex-min-height" : "30px",
+                              "flex-min-width" : "",
+                              "flex-shrink" : 1,
+                              "flex-size" : "fixed",
+                              "flex-wrap" : "nowrap",
+                              "iconClass" : "widgets-flexcontainer-fixed",
+                              "isLocked" : false,
+                              "justify-content" : "flex-start",
+                              "positioning" : "responsive",
+                              "userCannotRemove" : false
+                            },
+                            "Widgets" : [ {
+                              "Properties" : {
+                                "Area" : "UI",
+                                "DisclosureControl" : "show-more",
+                                "DisplayName" : "ptcs-label-87",
+                                "HorizontalAlignment" : "left",
+                                "Id" : "ptcslabel-87",
+                                "LabelText" : "CPU Usage",
+                                "LabelType" : "header",
+                                "LastContainer" : false,
+                                "Left" : 42.01171875,
+                                "Margin" : "0",
+                                "MultiLine" : true,
+                                "PreserveWhiteSpace" : false,
+                                "ResponsiveLayout" : false,
+                                "ShowDataLoading" : true,
+                                "Top" : 10.01953125,
+                                "Type" : "ptcslabel",
+                                "UseTheme" : true,
+                                "VerticalAlignment" : "flex-start",
+                                "Visible" : true,
+                                "Z-index" : 10,
+                                "__TypeDisplayName" : "Label",
+                                "overflowShowLessTxt" : "[[showLess]]",
+                                "overflowShowMoreTxt" : "[[showMore]]"
+                              },
+                              "Widgets" : [ ]
+                            }, {
+                              "Properties" : {
+                                "Area" : "UI",
+                                "ButtonType" : "transparent",
+                                "ContextID" : "",
+                                "Disabled" : false,
+                                "DisplayName" : "ptcs-button-97",
+                                "Height" : 20,
+                                "Icon" : "/Thingworx/MediaEntities/TWX.Metrices.PopupIcon_ME",
+                                "Id" : "ptcsbutton-97",
+                                "Label" : null,
+                                "LabelAlignment" : "center",
+                                "LastContainer" : false,
+                                "Left" : 212.01171875,
+                                "Margin" : "5",
+                                "MultiLine" : false,
+                                "ResponsiveLayout" : false,
+                                "ShowDataLoading" : true,
+                                "TabSequence" : 0,
+                                "Top" : 10.01953125,
+                                "Type" : "ptcsbutton",
+                                "UseTheme" : true,
+                                "Visible" : true,
+                                "Z-index" : 10,
+                                "__TypeDisplayName" : "Button"
                               },
                               "Widgets" : [ ]
                             } ]
@@ -1596,7 +1880,7 @@
                                 "HorizontalStartZoomLabel" : "",
                                 "HorizontalZoom" : false,
                                 "Id" : "ptcschartline-80",
-                                "Label" : "CPU Usage",
+                                "Label" : "",
                                 "LabelAlignment" : "left",
                                 "LabelPosition" : "top",
                                 "LabelReset" : "Reset",
@@ -1681,8 +1965,8 @@
                                 "ShowDataLoading" : true,
                                 "ShowHideLegend" : false,
                                 "ShowHorizontalAnchorPointControl" : false,
-                                "ShowXAxisRuler" : false,
-                                "ShowYAxisRuler" : false,
+                                "ShowXAxisRuler" : true,
+                                "ShowYAxisRuler" : true,
                                 "ShowZeroValueRuler" : false,
                                 "SparkView" : false,
                                 "StackOrder" : "auto",
@@ -1743,6 +2027,7 @@
                                 "YAxisFormat" : "0000.00 %",
                                 "YAxisLabel" : null,
                                 "YAxisLabelAlignment" : "center",
+                                "YAxisMinimumValues" : 0,
                                 "YAxisRulerAlignment" : "primary",
                                 "YAxisType" : "number",
                                 "Z-index" : 10,
@@ -2515,7 +2800,7 @@
                       "LastContainer" : false,
                       "LazyLoading" : false,
                       "Overlay" : false,
-                      "ResponsiveLayout" : true,
+                      "ResponsiveLayout" : false,
                       "ShowDataLoading" : true,
                       "ShowExpandCollapseTab" : false,
                       "SourceURL" : "",
@@ -2560,7 +2845,7 @@
                     "PopupHeight" : "600",
                     "PopupScrollbar" : "hidden",
                     "PopupTitle" : "",
-                    "PopupWidth" : "800",
+                    "PopupWidth" : "1300",
                     "RedirectTo" : "mashup",
                     "ReloadOnReplace" : false,
                     "ResponsiveLayout" : false,
@@ -2630,6 +2915,149 @@
                     "ResponsiveLayout" : false,
                     "ShowDataLoading" : true,
                     "TargetMashup" : "TWX.Metrices.UserStats_PP",
+                    "TargetWindowType" : "modal-popup",
+                    "Text" : "tw.navigationfunction-ide.properties.text.default-value",
+                    "Top" : null,
+                    "Type" : "navigationfunction",
+                    "URL" : "",
+                    "URLTargetType" : "new",
+                    "Visible" : true,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "navigationfunction",
+                    "_currentParameterDefs" : [ ]
+                  },
+                  "Widgets" : [ ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "ClickOutsideToClose" : true,
+                    "CloseButton" : false,
+                    "DisplayName" : "MemUsagegPP",
+                    "Id" : "navigationfunction-95",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "MashupParameters" : [ {
+                      "BaseType" : "STRING",
+                      "Description" : "",
+                      "ParameterName" : "Metric",
+                      "ParmDef" : {
+                        "aspects" : {
+                          "bindingDirection" : "BOTH",
+                          "isMandatory" : "false"
+                        },
+                        "baseType" : "STRING",
+                        "description" : "",
+                        "name" : "Metric",
+                        "ordinal" : 0
+                      }
+                    } ],
+                    "MissingMashupMessage" : "",
+                    "PopupHeight" : "600",
+                    "PopupScrollbar" : "auto",
+                    "PopupTitle" : "",
+                    "PopupWidth" : "1300",
+                    "RedirectTo" : "mashup",
+                    "ReloadOnReplace" : false,
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "TargetMashup" : "TWX.Metrices.MetricHistory_PP",
+                    "TargetWindowType" : "modal-popup",
+                    "Text" : "tw.navigationfunction-ide.properties.text.default-value",
+                    "Top" : null,
+                    "Type" : "navigationfunction",
+                    "URL" : "",
+                    "URLTargetType" : "new",
+                    "Visible" : true,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "navigationfunction",
+                    "_currentParameterDefs" : [ {
+                      "BaseType" : "STRING",
+                      "DefaultValue" : "RAM",
+                      "Description" : "",
+                      "ParameterName" : "Metric",
+                      "bindingDirection" : "Both",
+                      "bindingType" : "Property",
+                      "isBindingSource" : true,
+                      "isBindingTarget" : true,
+                      "shown" : true
+                    } ]
+                  },
+                  "Widgets" : [ ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "ClickOutsideToClose" : true,
+                    "CloseButton" : false,
+                    "DisplayName" : "CPUUsagePP",
+                    "Id" : "navigationfunction-96",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "MashupParameters" : [ {
+                      "BaseType" : "STRING",
+                      "Description" : "",
+                      "ParameterName" : "Metric",
+                      "ParmDef" : {
+                        "aspects" : {
+                          "bindingDirection" : "BOTH",
+                          "isMandatory" : "false"
+                        },
+                        "baseType" : "STRING",
+                        "description" : "",
+                        "name" : "Metric",
+                        "ordinal" : 0
+                      }
+                    } ],
+                    "MissingMashupMessage" : "",
+                    "PopupHeight" : "600",
+                    "PopupScrollbar" : "auto",
+                    "PopupTitle" : "",
+                    "PopupWidth" : "1300",
+                    "RedirectTo" : "mashup",
+                    "ReloadOnReplace" : false,
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "TargetMashup" : "TWX.Metrices.MetricHistory_PP",
+                    "TargetWindowType" : "modal-popup",
+                    "Text" : "tw.navigationfunction-ide.properties.text.default-value",
+                    "Top" : null,
+                    "Type" : "navigationfunction",
+                    "URL" : "",
+                    "URLTargetType" : "new",
+                    "Visible" : true,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "navigationfunction",
+                    "_currentParameterDefs" : [ {
+                      "BaseType" : "STRING",
+                      "DefaultValue" : "CPU",
+                      "Description" : "",
+                      "ParameterName" : "Metric",
+                      "bindingDirection" : "Both",
+                      "bindingType" : "Property",
+                      "isBindingSource" : true,
+                      "isBindingTarget" : true,
+                      "shown" : true
+                    } ]
+                  },
+                  "Widgets" : [ ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "ClickOutsideToClose" : true,
+                    "CloseButton" : false,
+                    "DisplayName" : "RemoteThingsHistory",
+                    "Id" : "navigationfunction-98",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "MissingMashupMessage" : "",
+                    "PopupHeight" : "600",
+                    "PopupScrollbar" : "auto",
+                    "PopupTitle" : "",
+                    "PopupWidth" : "1300",
+                    "RedirectTo" : "mashup",
+                    "ReloadOnReplace" : false,
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "TargetMashup" : "TWX.Metrices.RemoteThingsInfo_PP",
                     "TargetWindowType" : "modal-popup",
                     "Text" : "tw.navigationfunction-ide.properties.text.default-value",
                     "Top" : null,

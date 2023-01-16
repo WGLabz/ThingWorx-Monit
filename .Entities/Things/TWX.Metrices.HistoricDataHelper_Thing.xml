@@ -79,7 +79,7 @@
                      ordinal="10"></PropertyDefinition>
                     <PropertyDefinition
                      aspect.cacheTime="0.0"
-                     aspect.dataChangeType="VALUE"
+                     aspect.dataChangeType="ALWAYS"
                      aspect.isLogged="true"
                      baseType="STRING"
                      category=""
@@ -128,6 +128,34 @@
                      name="GetMemoryUsageHistory">
                         <ResultType
                          aspect.dataShape="TWX.Metrices.ActiveUsersAndSessions_DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="DATETIME"
+                             description=""
+                             name="EndDate"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="DATETIME"
+                             description=""
+                             name="StartDate"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetRemoteThingHistory">
+                        <ResultType
+                         aspect.dataShape="TWX.Metrices.CPUUsage_DS"
                          baseType="INFOTABLE"
                          description=""
                          name="result"
@@ -206,8 +234,8 @@
                                             result = me.QueryNumberPropertyHistory({
                                                 maxItems: 100000,
                                                 propertyName: "CPU_USE_PERCENTAGE",
-                                                startDate: StartDate ,
-                                        		endDate: EndDate,
+                                                startDate: StartDate || new Date(new Date() - 24*60*60*1000),
+                                        		endDate: EndDate || new Date(),
                                             });
                                          result.RemoveField('id');
                                         
@@ -248,8 +276,8 @@
                                             var userAndSessionsHistory = me.QueryStringPropertyHistory({
                                                 maxItems: 100000,
                                                 propertyName: "MEMORY_METRICES_JMX",
-                                                startDate: StartDate ,
-                                        		endDate: EndDate,
+                                              	startDate: StartDate || new Date(new Date() - 24*60*60*1000),
+                                        		endDate: EndDate || new Date(),
                                             });
                                             
                                             userAndSessionsHistory.rows.toArray().forEach((row) => {
@@ -261,6 +289,49 @@
                                                 temp.timestamp = row.timestamp;
                                                 result.AddRow(temp);
                                             });
+                                        })();
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetRemoteThingHistory">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var result =  DataShapes["TWX.Metrices.CPUUsage_DS"].CreateValues();
+                                        (() => {
+                                            let stats = me.QueryStringPropertyHistory({
+                                                maxItems: 100000,
+                                                propertyName: "RemoteThings",
+                                                startDate: StartDate || new Date(new Date() - 24*60*60*1000),
+                                        		endDate: EndDate || new Date(),
+                                            });
+                                            
+                                            stats.rows.toArray().forEach((row) => result.AddRow({ timestamp: row.timestamp,total:JSON.parse(row.value).length, value: JSON.parse(row.value).data.filter((val) => val.STATUS ).length}));
+                                            
                                         })();
                                         ]]>
                                         </code>

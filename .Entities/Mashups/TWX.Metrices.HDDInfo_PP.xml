@@ -337,7 +337,7 @@
                 "EventTriggerEvent" : "Clicked",
                 "EventTriggerId" : "ptcsbutton-21",
                 "EventTriggerSection" : "",
-                "Id" : "1bf63db6-50eb-422d-ac8d-b144bd82617e"
+                "Id" : "60f35c6a-b780-4800-b6c6-41ecf4518fd1"
               }, {
                 "EventHandlerArea" : "Data",
                 "EventHandlerId" : "Things_TWX.Metrices.HDDInfoHelper_Thing",
@@ -1048,7 +1048,7 @@
                           "MashupGlobalPropertyBinding" : "{}",
                           "MashupHeight" : 120,
                           "MashupPropertyBinding" : "{\"partitions\":\"Partitions\",\"Name\":\"_Name\",\"TransferTime\":\"TransferTime\",\"WriteBytes\":\"WriteBytes\",\"ReadBytes\":\"ReadBytes\",\"Writes\":\"Writes\",\"Reads\":\"Reads\",\"Size\":\"Size\",\"UsedSpace\":\"UsedSpace\"}",
-                          "MashupWidth" : 768,
+                          "MashupWidth" : 1268,
                           "MinimumSpacing" : 10,
                           "MultiSelect" : false,
                           "OffScreenBufferFactor" : 0.1,

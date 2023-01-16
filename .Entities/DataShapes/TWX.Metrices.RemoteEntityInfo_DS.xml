@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="3"
+ universal="">
+    <DataShapes>
+        <DataShape
+         baseDataShape=""
+         description=""
+         documentationContent=""
+         homeMashup=""
+         name="TWX.Metrices.RemoteEntityInfo_DS"
+         projectName="TempTWXMetrices"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <FieldDefinitions>
+                <FieldDefinition
+                 baseType="IMAGELINK"
+                 description="Avatar image"
+                 name="avatar"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 baseType="STRING"
+                 description="Entity description"
+                 name="description"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="false"
+                 baseType="DATETIME"
+                 description=""
+                 name="lastconnected"
+                 ordinal="2"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="true"
+                 baseType="STRING"
+                 description="Entity name"
+                 name="name"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 aspect.dataShape="TWX.Metrices.RemoteThingProperty_DS"
+                 aspect.isPrimaryKey="false"
+                 baseType="INFOTABLE"
+                 description=""
+                 name="properties"
+                 ordinal="1"></FieldDefinition>
+            </FieldDefinitions>
+        </DataShape>
+    </DataShapes>
+</Entities>
