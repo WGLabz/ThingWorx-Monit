@@ -14,6 +14,12 @@
 <p align="center"><img src=".img/lasnd.PNG" alt="Kafka Explorer" width="1000px" /></p>
 <br/>
 
+## Latest Binary
+
+You can download the latest binary from the following link.
+
+[V 0.1 Alpha](https://github.com/WGLabz/ThingWorx-Monit/releases/download/v0.1-alpha/With.Entites.ThingWorx.Metrices.zip) 
+
 ## Tools
 
 - [ThingWorx Extension SDK](https://vuejs.org/)
