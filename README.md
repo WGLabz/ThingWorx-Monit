@@ -4,15 +4,16 @@
     </b>
 </h1>
     <h4 align="center">An open-source tool to monitor ThingWorx platform/server performance</h4>
-<br/>
 <!-- <p align="center">
 <img src="https://sonarcloud.io/api/project_badges/measure?project=WGLabz_kafka-explorer&metric=code_smells" />
 <img src="https://sonarcloud.io/api/project_badges/measure?project=WGLabz_kafka-explorer&metric=sqale_rating" />
 <img src="https://sonarcloud.io/api/project_badges/measure?project=WGLabz_kafka-explorer&metric=bugs" />
 </p> -->
 <br/>
-<p align="center"><img src=".img/lasnd.PNG" alt="Kafka Explorer" width="1000px" /></p>
-<br/>
+<p align="center"><img src=".img/lasnd.PNG" alt="Kafka Explorer" width="1000px" /> 
+</p>
+
+![example workflow](https://github.com/WGLabz/ThingWorx-Monit/actions/workflows/ant.yml/badge.svg)
 
 ## Latest Binary
 
